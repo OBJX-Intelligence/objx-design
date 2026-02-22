@@ -7,15 +7,11 @@ export function Navbar() {
     <header className="sticky top-0 z-40 bg-background/90 backdrop-blur-sm border-b border-border/40">
       <div className="max-w-6xl mx-auto px-6 sm:px-10 h-14 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <img
-            src="/logos/logo-01.svg"
-            alt="OBJX Design"
-            className="h-7 w-auto object-contain"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = "none";
-            }}
-          />
+        <Link to="/" className="flex items-center shrink-0" aria-label="OBJX Design home">
+          <span className="text-xl tracking-tight leading-none">
+            <span className="font-semibold text-foreground/50">OBJX</span>
+            <span className="font-extralight text-foreground">Design</span>
+          </span>
         </Link>
 
         {/* Navigation */}
