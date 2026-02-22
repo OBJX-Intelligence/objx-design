@@ -4,7 +4,7 @@ import { IntelligenceBridge } from "@/components/IntelligenceBridge";
 import { useProjects } from "@/hooks/useProjects";
 
 export function LandingPage() {
-  const { publishedProjects } = useProjects();
+  const { featuredProjects } = useProjects();
 
   return (
     <main>
@@ -25,8 +25,8 @@ export function LandingPage() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="mt-6 text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed"
         >
-          Every project is an opportunity to develop creative direction in response to our
-          continuously evolving landscapes.
+          Residential and commercial architecture rooted in San Diego.
+          Full-service design - from feasibility through permit.
         </motion.p>
 
         <motion.p
@@ -35,13 +35,13 @@ export function LandingPage() {
           transition={{ duration: 0.6, delay: 0.35 }}
           className="mt-4 text-xs text-muted-foreground/60 tracking-wider"
         >
-          Objective By Design + OBJXIntelligence
+          Objective by Design + OBJX Intelligence
         </motion.p>
       </section>
 
       {/* ─── Gallery Snippet ──────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-24">
-        <GalleryGrid projects={publishedProjects} limit={6} showViewAll />
+        <GalleryGrid projects={featuredProjects} limit={6} showViewAll />
       </section>
 
       {/* ─── Intelligence Bridge ──────────────────────────── */}
@@ -60,18 +60,17 @@ export function LandingPage() {
           >
             <div className="w-8 h-px bg-foreground/30" />
             <h2 className="text-2xl sm:text-3xl font-light leading-snug">
-              Custom environments,<br />
-              composed with intention.
+              Design with clarity.<br />
+              Build with intent.
             </h2>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-              OBJX Design creates original artworks and environmental installations for private
-              collectors and commercial spaces. Each piece is developed through a process guided
-              by both instinct and intelligence — exploring the intersection of material, form,
-              and the spaces they inhabit.
+              OBJX Design is a San Diego architecture and design practice specializing in
+              residential renovations, ADUs, commercial interiors, and new construction.
+              We handle the full scope - concept through permitted drawings.
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
-              Available for custom commissions, private collections, and collaborative projects
-              that demand a distinctive creative voice.
+              For property owners exploring what's possible, we offer feasibility analysis,
+              zoning review, and development consulting - powered by OBJX Intelligence.
             </p>
           </motion.div>
 
@@ -86,7 +85,7 @@ export function LandingPage() {
             <div className="w-8 h-px bg-foreground/30" />
             <h2 className="text-2xl sm:text-3xl font-light">Contact</h2>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              For custom paintings, commissions, or any questions — reach out directly.
+              For project inquiries or to discuss your property - reach out directly.
             </p>
             <div className="space-y-2">
               <a

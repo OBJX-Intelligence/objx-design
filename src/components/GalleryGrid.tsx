@@ -16,18 +16,28 @@ export function GalleryGrid({ projects, limit, showViewAll = false }: GalleryGri
         {displayed.map((project) => (
           <div key={project.id} className="group space-y-3">
             <div className="overflow-hidden bg-card aspect-[4/5]">
-              {project.imageUrl ? (
-                <img
-                  src={project.imageUrl}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
-              ) : (
-                <div className="w-full h-full bg-muted flex items-center justify-center">
-                  <span className="text-muted-foreground text-xs">{project.title}</span>
-                </div>
-              )}
+              {(() => {
+                const img = project.images[0];
+                const src = img?.url ?? project.imageUrl;
+                return src ? (
+                  <img
+                    src={src}
+                    alt={project.title}
+                    className="w-full h-full transition-transform duration-500 group-hover:scale-[1.03]"
+                    style={{
+                      objectFit: "cover",
+                      objectPosition: img ? `${img.cropX}% ${img.cropY}%` : "50% 50%",
+                      transform: img && img.cropScale !== 1 ? `scale(${img.cropScale})` : undefined,
+                      transformOrigin: "50% 50%",
+                    }}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-muted flex items-center justify-center">
+                    <span className="text-muted-foreground text-xs">{project.title}</span>
+                  </div>
+                );
+              })()}
             </div>
             <p className="text-sm text-foreground/70 font-normal">{project.title}</p>
           </div>

@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useProjects, type Project } from "@/hooks/useProjects";
+import { cn } from "@/lib/utils";
+import { useProjects, type Project, type ProjectImage } from "@/hooks/useProjects";
 import {
   Trash2,
   Plus,
@@ -13,6 +14,9 @@ import {
   ChevronDown,
   ExternalLink,
   ImageIcon,
+  Crop,
+  X,
+  Layout,
 } from "lucide-react";
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "objxdesign2026";
@@ -67,112 +71,408 @@ function LoginScreen({ onAuth }: { onAuth: () => void }) {
   );
 }
 
-/* ─── Image input with upload + URL tabs ─────────────── */
-function ImageInput({
-  value,
-  onChange,
+/* ─── Image crop modal ───────────────────────────────── */
+function ImageCropModal({
+  image,
+  onSave,
+  onCancel,
 }: {
-  value: string;
-  onChange: (url: string) => void;
+  image: ProjectImage;
+  onSave: (updated: ProjectImage) => void;
+  onCancel: () => void;
 }) {
+  const [cropX, setCropX] = useState(image.cropX);
+  const [cropY, setCropY] = useState(image.cropY);
+  const [cropScale, setCropScale] = useState(image.cropScale);
+  const dragging = useRef(false);
+  const lastPos = useRef({ x: 0, y: 0 });
+  const frameRef = useRef<HTMLDivElement>(null);
+
+  const SENSITIVITY = 0.25;
+
+  function startDrag(clientX: number, clientY: number) {
+    dragging.current = true;
+    lastPos.current = { x: clientX, y: clientY };
+  }
+
+  function moveDrag(clientX: number, clientY: number) {
+    if (!dragging.current) return;
+    const dx = (clientX - lastPos.current.x) * SENSITIVITY;
+    const dy = (clientY - lastPos.current.y) * SENSITIVITY;
+    lastPos.current = { x: clientX, y: clientY };
+    setCropX((v) => Math.max(0, Math.min(100, v - dx)));
+    setCropY((v) => Math.max(0, Math.min(100, v - dy)));
+  }
+
+  function endDrag() {
+    dragging.current = false;
+  }
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/60 backdrop-blur-sm px-4">
+      <div className="bg-background border border-border/60 p-6 space-y-5 w-full max-w-sm">
+        <div className="flex items-center justify-between">
+          <h3 className="text-sm font-medium">Crop &amp; position</h3>
+          <button onClick={onCancel} className="p-1 hover:bg-muted rounded transition-colors">
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+
+        <p className="text-xs text-muted-foreground">
+          Drag to pan · Slider to zoom
+        </p>
+
+        {/* Crop preview frame — 4:5 aspect */}
+        <div
+          ref={frameRef}
+          className="w-full overflow-hidden border border-border/40 select-none"
+          style={{ aspectRatio: "4/5", cursor: dragging.current ? "grabbing" : "grab" }}
+          onMouseDown={(e) => startDrag(e.clientX, e.clientY)}
+          onMouseMove={(e) => moveDrag(e.clientX, e.clientY)}
+          onMouseUp={endDrag}
+          onMouseLeave={endDrag}
+          onTouchStart={(e) => startDrag(e.touches[0].clientX, e.touches[0].clientY)}
+          onTouchMove={(e) => {
+            e.preventDefault();
+            moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+          }}
+          onTouchEnd={endDrag}
+        >
+          <img
+            src={image.url}
+            alt="Crop preview"
+            className="w-full h-full pointer-events-none"
+            style={{
+              objectFit: "cover",
+              objectPosition: `${cropX}% ${cropY}%`,
+              transform: `scale(${cropScale})`,
+              transformOrigin: "50% 50%",
+            }}
+            draggable={false}
+          />
+        </div>
+
+        {/* Zoom slider */}
+        <div className="space-y-1.5">
+          <label htmlFor="crop-zoom" className="text-xs text-muted-foreground flex justify-between">
+            <span>Zoom</span>
+            <span>{cropScale.toFixed(2)}×</span>
+          </label>
+          <input
+            id="crop-zoom"
+            type="range"
+            min="1"
+            max="3"
+            step="0.05"
+            value={cropScale}
+            onChange={(e) => setCropScale(parseFloat(e.target.value))}
+            className="w-full accent-foreground"
+          />
+        </div>
+
+        {/* Actions */}
+        <div className="flex gap-2 pt-1">
+          <Button
+            type="button"
+            size="sm"
+            onClick={() => onSave({ ...image, cropX, cropY, cropScale })}
+          >
+            Apply
+          </Button>
+          <Button
+            type="button"
+            size="sm"
+            variant="ghost"
+            onClick={() => {
+              setCropX(50);
+              setCropY(50);
+              setCropScale(1);
+            }}
+          >
+            Reset
+          </Button>
+          <Button type="button" size="sm" variant="ghost" onClick={onCancel} className="ml-auto">
+            Cancel
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Single image row within MultiImageEditor ───────── */
+function ImageRow({
+  image,
+  index,
+  isFirst,
+  isLast,
+  isPrimary,
+  onCrop,
+  onRemove,
+  onMoveUp,
+  onMoveDown,
+}: {
+  image: ProjectImage;
+  index: number;
+  isFirst: boolean;
+  isLast: boolean;
+  isPrimary: boolean;
+  onCrop: () => void;
+  onRemove: () => void;
+  onMoveUp: () => void;
+  onMoveDown: () => void;
+}) {
+  return (
+    <div className="flex items-center gap-3 border border-border/40 bg-card px-3 py-2">
+      {/* Reorder */}
+      <div className="flex flex-col gap-0.5 shrink-0">
+        <button
+          type="button"
+          onClick={onMoveUp}
+          disabled={isFirst}
+          className="p-0.5 hover:bg-muted rounded disabled:opacity-20 disabled:cursor-not-allowed"
+          title="Move up"
+        >
+          <ChevronUp className="w-3.5 h-3.5" />
+        </button>
+        <button
+          type="button"
+          onClick={onMoveDown}
+          disabled={isLast}
+          className="p-0.5 hover:bg-muted rounded disabled:opacity-20 disabled:cursor-not-allowed"
+          title="Move down"
+        >
+          <ChevronDown className="w-3.5 h-3.5" />
+        </button>
+      </div>
+
+      {/* Thumbnail */}
+      <div className="w-14 h-14 shrink-0 overflow-hidden bg-muted border border-border/30">
+        {image.url && (
+          <img
+            src={image.url}
+            alt={`Image ${index + 1}`}
+            className="w-full h-full object-cover"
+            style={{ objectPosition: `${image.cropX}% ${image.cropY}%` }}
+          />
+        )}
+      </div>
+
+      {/* Label */}
+      <div className="flex-1 min-w-0">
+        <p className="text-xs text-muted-foreground truncate">
+          {image.url.startsWith("data:") ? "Uploaded image" : image.url || "No URL"}
+        </p>
+        {isPrimary && (
+          <span className="text-xs text-foreground/50 border border-border/40 px-1.5 py-0.5 mt-0.5 inline-block">
+            Primary
+          </span>
+        )}
+      </div>
+
+      {/* Actions */}
+      <div className="flex items-center gap-1 shrink-0">
+        <button
+          type="button"
+          onClick={onCrop}
+          className="flex items-center gap-1 px-2 py-1 text-xs text-muted-foreground hover:text-foreground border border-border/40 hover:border-foreground/30 transition-colors"
+          title="Crop &amp; position"
+        >
+          <Crop className="w-3 h-3" />
+          Crop
+        </button>
+        <button
+          type="button"
+          onClick={onRemove}
+          className="p-1.5 hover:bg-muted rounded transition-colors"
+          title="Remove image"
+        >
+          <Trash2 className="w-3.5 h-3.5 text-muted-foreground hover:text-destructive transition-colors" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Add image sub-form (upload or URL) ─────────────── */
+function AddImageForm({ onAdd }: { onAdd: (imgs: ProjectImage[]) => void }) {
   const [mode, setMode] = useState<"upload" | "url">("upload");
+  const [urlValue, setUrlValue] = useState("");
   const [sizeWarning, setSizeWarning] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setSizeWarning(file.size > 800_000);
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-      const result = ev.target?.result;
-      if (typeof result === "string") onChange(result);
-    };
-    reader.readAsDataURL(file);
+    const files = Array.from(e.target.files ?? []);
+    if (files.length === 0) return;
+    setSizeWarning(files.some((f) => f.size > 800_000));
+    const promises = files.map(
+      (file) =>
+        new Promise<ProjectImage>((resolve) => {
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            const result = ev.target?.result;
+            if (typeof result === "string") {
+              resolve({ url: result, cropX: 50, cropY: 50, cropScale: 1 });
+            }
+          };
+          reader.readAsDataURL(file);
+        })
+    );
+    Promise.all(promises).then((imgs) => {
+      onAdd(imgs);
+      e.target.value = "";
+    });
+  }
+
+  function handleUrl() {
+    const url = urlValue.trim();
+    if (!url) return;
+    onAdd([{ url, cropX: 50, cropY: 50, cropScale: 1 }]);
+    setUrlValue("");
+  }
+
+  return (
+    <div className="border border-dashed border-border/50 p-3 space-y-2">
+      <div className="flex items-center gap-1 border-b border-border/30">
+        {(["upload", "url"] as const).map((m) => (
+          <button
+            key={m}
+            type="button"
+            onClick={() => setMode(m)}
+            className={`px-3 py-1.5 text-xs transition-colors ${
+              mode === m
+                ? "text-foreground border-b-2 border-foreground -mb-px"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
+            {m === "upload" ? "Upload" : "URL"}
+          </button>
+        ))}
+      </div>
+
+      {mode === "upload" ? (
+        <div className="space-y-1.5">
+          <button
+            type="button"
+            onClick={() => fileRef.current?.click()}
+            className="flex items-center gap-2 w-full text-xs text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ImageIcon className="w-3.5 h-3.5 shrink-0" />
+            Choose image(s) from device
+          </button>
+          <input ref={fileRef} type="file" accept="image/*" multiple className="hidden" onChange={handleFile} />
+          {sizeWarning && (
+            <p className="text-xs text-amber-600">Large image (&gt;800KB) may slow the site.</p>
+          )}
+        </div>
+      ) : (
+        <div className="flex gap-2">
+          <Input
+            value={urlValue}
+            onChange={(e) => setUrlValue(e.target.value)}
+            placeholder="/images/project.jpg or https://..."
+            className="text-xs h-8"
+            onKeyDown={(e) => e.key === "Enter" && handleUrl()}
+          />
+          <Button type="button" size="sm" onClick={handleUrl} disabled={!urlValue.trim()}>
+            Add
+          </Button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ─── Multi-image editor ─────────────────────────────── */
+function MultiImageEditor({
+  images,
+  onChange,
+}: {
+  images: ProjectImage[];
+  onChange: (imgs: ProjectImage[]) => void;
+}) {
+  const [cropTarget, setCropTarget] = useState<number | null>(null);
+  const [showAddForm, setShowAddForm] = useState(false);
+
+  function moveImage(idx: number, direction: "up" | "down") {
+    const swapIdx = direction === "up" ? idx - 1 : idx + 1;
+    if (swapIdx < 0 || swapIdx >= images.length) return;
+    const updated = [...images];
+    [updated[idx], updated[swapIdx]] = [updated[swapIdx], updated[idx]];
+    onChange(updated);
+  }
+
+  function removeImage(idx: number) {
+    onChange(images.filter((_, i) => i !== idx));
+  }
+
+  function addImage(imgs: ProjectImage[]) {
+    onChange([...images, ...imgs]);
+    setShowAddForm(false);
+  }
+
+  function saveCrop(updated: ProjectImage) {
+    if (cropTarget === null) return;
+    const newImgs = images.map((img, i) => (i === cropTarget ? updated : img));
+    onChange(newImgs);
+    setCropTarget(null);
   }
 
   return (
     <div className="space-y-2">
-      <div className="flex items-center gap-1 border-b border-border/40">
-        <button
-          type="button"
-          onClick={() => setMode("upload")}
-          className={`px-3 py-1.5 text-xs transition-colors ${
-            mode === "upload"
-              ? "text-foreground border-b-2 border-foreground -mb-px"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          Upload
-        </button>
-        <button
-          type="button"
-          onClick={() => setMode("url")}
-          className={`px-3 py-1.5 text-xs transition-colors ${
-            mode === "url"
-              ? "text-foreground border-b-2 border-foreground -mb-px"
-              : "text-muted-foreground hover:text-foreground"
-          }`}
-        >
-          URL
-        </button>
-      </div>
+      {images.length === 0 && (
+        <p className="text-xs text-muted-foreground py-2">No images yet. Add one below.</p>
+      )}
 
-      {mode === "upload" ? (
+      {images.map((img, idx) => (
+        <ImageRow
+          key={idx}
+          image={img}
+          index={idx}
+          isFirst={idx === 0}
+          isLast={idx === images.length - 1}
+          isPrimary={idx === 0}
+          onCrop={() => setCropTarget(idx)}
+          onRemove={() => removeImage(idx)}
+          onMoveUp={() => moveImage(idx, "up")}
+          onMoveDown={() => moveImage(idx, "down")}
+        />
+      ))}
+
+      {showAddForm ? (
         <div className="space-y-2">
+          <AddImageForm onAdd={addImage} />
           <button
             type="button"
-            onClick={() => fileRef.current?.click()}
-            className="flex items-center gap-2 border border-dashed border-border/60 px-4 py-3 w-full text-xs text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+            onClick={() => setShowAddForm(false)}
+            className="text-xs text-muted-foreground hover:text-foreground"
           >
-            <ImageIcon className="w-4 h-4 shrink-0" />
-            {value && value.startsWith("data:") ? "Replace image" : "Choose image from device"}
+            Cancel
           </button>
-          <input
-            ref={fileRef}
-            type="file"
-            accept="image/*"
-            className="hidden"
-            onChange={handleFile}
-          />
-          {sizeWarning && (
-            <p className="text-xs text-amber-600">
-              Large image (&gt;800KB) may slow the site. Consider optimising before uploading.
-            </p>
-          )}
-          <p className="text-xs text-muted-foreground/70">
-            Tip: For production, commit artwork to <code className="bg-muted px-0.5">public/images/</code>{" "}
-            and use <code className="bg-muted px-0.5">/images/name.jpg</code> as the URL — no size limits.
-          </p>
         </div>
       ) : (
-        <Input
-          value={value.startsWith("data:") ? "" : value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder="/images/sand.jpg or https://..."
+        <button
+          type="button"
+          onClick={() => setShowAddForm(true)}
+          className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors border border-border/40 px-3 py-2 w-full justify-center hover:border-foreground/30"
+        >
+          <Plus className="w-3.5 h-3.5" />
+          Add image
+        </button>
+      )}
+
+      {cropTarget !== null && images[cropTarget] && (
+        <ImageCropModal
+          image={images[cropTarget]}
+          onSave={saveCrop}
+          onCancel={() => setCropTarget(null)}
         />
       )}
 
-      {/* Live preview */}
-      {value && (
-        <div className="flex items-start gap-3 pt-1">
-          <div className="w-20 h-20 shrink-0 bg-muted overflow-hidden border border-border/40">
-            <img src={value} alt="Preview" className="w-full h-full object-cover" />
-          </div>
-          <div className="flex flex-col gap-1 pt-1">
-            <p className="text-xs text-muted-foreground">Preview</p>
-            {value.startsWith("data:") && (
-              <p className="text-xs text-muted-foreground">Stored as base64</p>
-            )}
-            <button
-              type="button"
-              onClick={() => onChange("")}
-              className="text-xs text-muted-foreground hover:text-destructive transition-colors text-left"
-            >
-              Remove
-            </button>
-          </div>
-        </div>
+      {images.length > 0 && (
+        <p className="text-xs text-muted-foreground/60">
+          First image is shown in the gallery and on the card front.
+        </p>
       )}
     </div>
   );
@@ -183,6 +483,7 @@ const BLANK: Omit<Project, "id" | "orderIndex" | "published"> = {
   title: "",
   description: "",
   imageUrl: "",
+  images: [],
   category: "",
   medium: "",
   year: new Date().getFullYear().toString(),
@@ -203,13 +504,17 @@ function ProjectForm({
     setForm((f) => ({ ...f, [field]: value }));
   }
 
+  function setImages(imgs: ProjectImage[]) {
+    setForm((f) => ({ ...f, images: imgs, imageUrl: imgs[0]?.url ?? "" }));
+  }
+
   return (
     <div className="border border-border/60 p-6 space-y-4 bg-card">
       <h3 className="text-sm font-medium">{initial?.id ? "Edit project" : "Add project"}</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1">
           <label className="text-xs text-muted-foreground">Title *</label>
-          <Input value={form.title} onChange={(e) => set("title", e.target.value)} placeholder="Sand" />
+          <Input value={form.title} onChange={(e) => set("title", e.target.value)} placeholder="Project title" />
         </div>
         <div className="space-y-1">
           <label className="text-xs text-muted-foreground">Year</label>
@@ -217,11 +522,11 @@ function ProjectForm({
         </div>
         <div className="space-y-1">
           <label className="text-xs text-muted-foreground">Category</label>
-          <Input value={form.category} onChange={(e) => set("category", e.target.value)} placeholder="Painting" />
+          <Input value={form.category} onChange={(e) => set("category", e.target.value)} placeholder="Residential" />
         </div>
         <div className="space-y-1">
-          <label className="text-xs text-muted-foreground">Medium</label>
-          <Input value={form.medium} onChange={(e) => set("medium", e.target.value)} placeholder="Oil on canvas" />
+          <label className="text-xs text-muted-foreground">Medium / Type</label>
+          <Input value={form.medium} onChange={(e) => set("medium", e.target.value)} placeholder="ADU - New Construction" />
         </div>
         <div className="space-y-1 sm:col-span-2">
           <label className="text-xs text-muted-foreground">Description</label>
@@ -230,16 +535,17 @@ function ProjectForm({
             rows={3}
             value={form.description}
             onChange={(e) => set("description", e.target.value)}
-            placeholder="A brief description of this work..."
+            placeholder="Brief description of this project..."
           />
         </div>
-        <div className="space-y-1 sm:col-span-2">
-          <label className="text-xs text-muted-foreground">Image</label>
-          <ImageInput value={form.imageUrl} onChange={(url) => set("imageUrl", url)} />
+        <div className="space-y-2 sm:col-span-2">
+          <label className="text-xs text-muted-foreground">Images</label>
+          <MultiImageEditor images={form.images} onChange={setImages} />
         </div>
       </div>
       <div className="flex gap-3 pt-2">
         <Button
+          type="button"
           size="sm"
           onClick={() =>
             form.title.trim() && onSave({ ...form, published: initial?.published ?? true })
@@ -248,7 +554,7 @@ function ProjectForm({
         >
           Save
         </Button>
-        <Button size="sm" variant="ghost" onClick={onCancel}>
+        <Button type="button" size="sm" variant="ghost" onClick={onCancel}>
           Cancel
         </Button>
       </div>
@@ -258,19 +564,47 @@ function ProjectForm({
 
 /* ─── Main admin panel ──────────────────────────────── */
 function AdminPanel() {
-  const { projects, addProject, updateProject, deleteProject, reorderProject, exportJson } =
-    useProjects();
+  const {
+    projects,
+    addProject,
+    updateProject,
+    deleteProject,
+    reorderProject,
+    exportJson,
+    saveError,
+    clearSaveError,
+  } = useProjects();
   const [adding, setAdding] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
+  const [savedId, setSavedId] = useState<string | null>(null);
 
-  // Sorted for display + determining first/last
+  function confirmSave(id: string) {
+    setSavedId(id);
+    setTimeout(() => setSavedId((cur) => (cur === id ? null : cur)), 2000);
+  }
+
   const sortedIds = [...projects]
     .sort((a, b) => a.orderIndex - b.orderIndex)
     .map((p) => p.id);
 
   return (
     <div className="max-w-4xl mx-auto px-6 sm:px-10 py-14 space-y-10">
+      {/* Save error banner */}
+      {saveError && (
+        <div className="border border-destructive/40 bg-destructive/5 px-4 py-3 text-xs text-destructive flex items-start justify-between gap-4">
+          <span>{saveError}</span>
+          <button
+            type="button"
+            onClick={clearSaveError}
+            className="shrink-0 hover:opacity-60 transition-opacity"
+            aria-label="Dismiss"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
@@ -278,7 +612,6 @@ function AdminPanel() {
           <p className="text-sm text-muted-foreground mt-1">{projects.length} projects total</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          {/* Quick links */}
           <a
             href="/"
             target="_blank"
@@ -297,11 +630,11 @@ function AdminPanel() {
             Work
             <ExternalLink className="w-3 h-3" />
           </a>
-          <Button size="sm" variant="outline" onClick={exportJson} className="gap-1.5">
+          <Button type="button" size="sm" variant="outline" onClick={exportJson} className="gap-1.5">
             <Download className="w-3.5 h-3.5" />
             Export JSON
           </Button>
-          <Button size="sm" onClick={() => setAdding(true)} className="gap-1.5">
+          <Button type="button" size="sm" onClick={() => setAdding(true)} className="gap-1.5">
             <Plus className="w-3.5 h-3.5" />
             Add project
           </Button>
@@ -312,19 +645,21 @@ function AdminPanel() {
       {adding && (
         <ProjectForm
           onSave={(data) => {
-            addProject(data);
+            const newProject = addProject(data);
             setAdding(false);
+            confirmSave(newProject.id);
           }}
           onCancel={() => setAdding(false)}
         />
       )}
 
-      {/* Project list — sorted by orderIndex */}
+      {/* Project list */}
       <div className="space-y-2">
         {sortedIds.map((id, listIdx) => {
           const project = projects.find((p) => p.id === id)!;
           const isFirst = listIdx === 0;
           const isLast = listIdx === sortedIds.length - 1;
+          const thumbUrl = project.images[0]?.url ?? project.imageUrl ?? "";
 
           return editingId === project.id ? (
             <ProjectForm
@@ -333,6 +668,7 @@ function AdminPanel() {
               onSave={(data) => {
                 updateProject(project.id, data);
                 setEditingId(null);
+                confirmSave(project.id);
               }}
               onCancel={() => setEditingId(null)}
             />
@@ -341,7 +677,7 @@ function AdminPanel() {
               key={project.id}
               className="flex items-center gap-3 border border-border/40 bg-card px-4 py-3"
             >
-              {/* Reorder buttons */}
+              {/* Reorder */}
               <div className="flex flex-col gap-0.5 shrink-0">
                 <button
                   onClick={() => reorderProject(project.id, "up")}
@@ -363,24 +699,28 @@ function AdminPanel() {
 
               {/* Thumbnail */}
               <div className="w-12 h-12 shrink-0 bg-muted overflow-hidden">
-                {project.imageUrl && (
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
+                {thumbUrl && (
+                  <img src={thumbUrl} alt={project.title} className="w-full h-full object-cover" />
                 )}
               </div>
 
               {/* Info */}
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium truncate">{project.title}</p>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-medium truncate">{project.title}</p>
+                  {savedId === project.id && (
+                    <span className="text-xs text-green-600 shrink-0">Saved ✓</span>
+                  )}
+                </div>
                 <p className="text-xs text-muted-foreground truncate">
                   {[project.category, project.medium, project.year].filter(Boolean).join(" · ")}
+                  {project.images.length > 1 && (
+                    <span className="ml-1 opacity-60">· {project.images.length} images</span>
+                  )}
                 </p>
               </div>
 
-              {/* Actions — always visible (mobile-friendly) */}
+              {/* Actions */}
               <div className="flex items-center gap-1 shrink-0">
                 {/* Publish toggle */}
                 <button
@@ -393,6 +733,30 @@ function AdminPanel() {
                   ) : (
                     <EyeOff className="w-4 h-4 text-muted-foreground" />
                   )}
+                </button>
+
+                {/* Landing page toggle */}
+                <button
+                  onClick={() =>
+                    updateProject(project.id, {
+                      showOnLanding: !(project.showOnLanding ?? true),
+                    })
+                  }
+                  className="p-1.5 hover:bg-muted rounded transition-colors"
+                  title={
+                    (project.showOnLanding ?? true)
+                      ? "Remove from landing page"
+                      : "Add to landing page"
+                  }
+                >
+                  <Layout
+                    className={cn(
+                      "w-4 h-4",
+                      (project.showOnLanding ?? true)
+                        ? "text-foreground/60"
+                        : "text-muted-foreground/30"
+                    )}
+                  />
                 </button>
 
                 {/* Edit */}
@@ -433,10 +797,15 @@ function AdminPanel() {
                 )}
               </div>
 
-              {/* Hidden badge */}
+              {/* Status badges */}
               {!project.published && (
                 <span className="text-xs text-muted-foreground border border-border/40 px-2 py-0.5 shrink-0">
                   hidden
+                </span>
+              )}
+              {!(project.showOnLanding ?? true) && (
+                <span className="text-xs text-muted-foreground border border-border/40 px-2 py-0.5 shrink-0">
+                  landing: off
                 </span>
               )}
             </div>

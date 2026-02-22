@@ -16,7 +16,7 @@ export function WorkPage() {
       >
         <h1 className="text-3xl sm:text-4xl font-light tracking-tight">Work</h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Hover or tap each piece to see the story behind it.
+          Hover or tap to see project details.
         </p>
       </motion.div>
 

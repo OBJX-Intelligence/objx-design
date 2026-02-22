@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* OBJX Design — neutral palette, always light */
-    --background: 0 0% 91%;          /* #E8E8E8 — site gray from screenshots */
+    --background: 0 0% 97%;          /* #F7F7F7 — near-white */
     --foreground: 0 0% 9%;           /* near-black text */
 
     --card: 0 0% 86%;                /* slightly darker card surface */

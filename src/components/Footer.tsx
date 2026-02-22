@@ -6,7 +6,7 @@ export function Footer() {
       {/* Intelligence strip */}
       <div className="bg-foreground text-primary-foreground py-3">
         <div className="max-w-6xl mx-auto px-6 sm:px-10 flex items-center justify-between text-xs">
-          <span className="opacity-60">Built on OBJX Intelligence · Objective by Design + Intelligence</span>
+          <span className="opacity-60">Objective by Design · San Diego Architecture + Design</span>
           <a
             href="https://meetobjx.com"
             target="_blank"
@@ -39,7 +39,7 @@ export function Footer() {
           <a href="mailto:hello@objx.design" className="hover:text-foreground transition-colors">
             hello@objx.design
           </a>
-          <span>© {year} OBJX Design. All rights reserved.</span>
+          <span>© {year} Objective by Design. All rights reserved.</span>
         </div>
       </div>
     </footer>
