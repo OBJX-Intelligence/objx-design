@@ -5,9 +5,10 @@ interface GalleryGridProps {
   projects: Project[];
   limit?: number;
   showViewAll?: boolean;
+  showCategory?: boolean;
 }
 
-export function GalleryGrid({ projects, limit, showViewAll = false }: GalleryGridProps) {
+export function GalleryGrid({ projects, limit, showViewAll = false, showCategory = false }: GalleryGridProps) {
   const displayed = limit ? projects.slice(0, limit) : projects;
 
   return (
@@ -39,7 +40,9 @@ export function GalleryGrid({ projects, limit, showViewAll = false }: GalleryGri
                 );
               })()}
             </div>
-            <p className="text-sm text-foreground/70 font-normal">{project.title}</p>
+            <p className="text-sm text-foreground/70 font-normal">
+              {showCategory ? project.category : project.title}
+            </p>
           </div>
         ))}
       </div>

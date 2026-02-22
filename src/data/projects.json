@@ -5,11 +5,12 @@
     "description": "Detached 800 SF accessory dwelling unit. Full design and permitting through City of San Diego. Maximized buildable area within setback constraints.",
     "imageUrl": "",
     "images": [],
-    "category": "Residential",
+    "category": "Missing Middle Residential",
     "medium": "ADU - New Construction",
     "year": "2025",
     "orderIndex": 1,
-    "published": true
+    "published": true,
+    "showOnLanding": false
   },
   {
     "id": "2",
@@ -17,11 +18,12 @@
     "description": "Full gut renovation of a 1940s bungalow. Opened floor plan, restored original hardwood, added rear kitchen extension with new structural beam.",
     "imageUrl": "",
     "images": [],
-    "category": "Residential",
+    "category": "Residential Interiors",
     "medium": "Interior Renovation",
     "year": "2025",
     "orderIndex": 2,
-    "published": true
+    "published": true,
+    "showOnLanding": false
   },
   {
     "id": "3",
@@ -29,11 +31,12 @@
     "description": "2,400 SF professional office suite. Custom millwork, exposed structural steel, integrated AV and lighting design throughout.",
     "imageUrl": "",
     "images": [],
-    "category": "Commercial",
+    "category": "Commercial Interiors",
     "medium": "Commercial Interior",
     "year": "2025",
     "orderIndex": 3,
-    "published": true
+    "published": true,
+    "showOnLanding": false
   },
   {
     "id": "4",
@@ -41,11 +44,12 @@
     "description": "480 SF rear addition with new primary suite. Matched existing roofline, coordinated with structural and MEP consultants through full permit.",
     "imageUrl": "",
     "images": [],
-    "category": "Residential",
+    "category": "Custom Residential",
     "medium": "Addition - Permitted",
     "year": "2025",
     "orderIndex": 4,
-    "published": true
+    "published": true,
+    "showOnLanding": false
   },
   {
     "id": "5",
@@ -53,11 +57,12 @@
     "description": "Ground-floor retail with 4 residential units above. ADU included on rear lot. Zoning variance secured for additional density.",
     "imageUrl": "",
     "images": [],
-    "category": "Commercial",
+    "category": "Missing Middle Residential",
     "medium": "Mixed-Use - New Construction",
     "year": "2025",
     "orderIndex": 5,
-    "published": true
+    "published": true,
+    "showOnLanding": false
   },
   {
     "id": "6",
@@ -65,11 +70,12 @@
     "description": "Kitchen and dining expansion for a 1960s ranch house. Removed load-bearing wall, added skylight, custom cabinetry and new island throughout.",
     "imageUrl": "",
     "images": [],
-    "category": "Residential",
+    "category": "Residential Interiors",
     "medium": "Interior Renovation",
     "year": "2025",
     "orderIndex": 6,
-    "published": true
+    "published": true,
+    "showOnLanding": false
   },
   {
     "id": "7",
@@ -77,11 +83,12 @@
     "description": "New detached duplex on a 5,000 SF lot. Coastal development permit coordination. Both units permitted for short-term rental.",
     "imageUrl": "",
     "images": [],
-    "category": "Residential",
+    "category": "Custom Residential",
     "medium": "New Construction",
     "year": "2025",
     "orderIndex": 7,
-    "published": true
+    "published": true,
+    "showOnLanding": false
   },
   {
     "id": "8",
@@ -89,10 +96,11 @@
     "description": "Zoning and feasibility analysis for a 12,000 SF mixed-use development. Identified by-right density options and variance opportunities.",
     "imageUrl": "",
     "images": [],
-    "category": "Consulting",
+    "category": "Conceptual Planning + Feasibility",
     "medium": "Property Analysis",
     "year": "2025",
     "orderIndex": 8,
-    "published": true
+    "published": true,
+    "showOnLanding": false
   }
 ]

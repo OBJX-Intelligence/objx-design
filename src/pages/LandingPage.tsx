@@ -25,8 +25,8 @@ export function LandingPage() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="mt-6 text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed"
         >
-          Residential and commercial architecture rooted in San Diego.
-          Full-service design - from feasibility through permit.
+          Over 15 years of residential and commercial architecture rooted in San Diego.
+          Full-service design - from first sketch through construction.
         </motion.p>
 
         <motion.p
@@ -35,13 +35,13 @@ export function LandingPage() {
           transition={{ duration: 0.6, delay: 0.35 }}
           className="mt-4 text-xs text-muted-foreground/60 tracking-wider"
         >
-          Objective by Design + OBJX Intelligence
+          OBJX Design  |  Objective by Design
         </motion.p>
       </section>
 
       {/* ─── Gallery Snippet ──────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-24">
-        <GalleryGrid projects={featuredProjects} limit={6} showViewAll />
+        <GalleryGrid projects={featuredProjects} showViewAll showCategory />
       </section>
 
       {/* ─── Intelligence Bridge ──────────────────────────── */}
@@ -66,7 +66,7 @@ export function LandingPage() {
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
               OBJX Design is a San Diego architecture and design practice specializing in
               residential renovations, ADUs, commercial interiors, and new construction.
-              We handle the full scope - concept through permitted drawings.
+              We handle the full scope - concept through project completion.
             </p>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
               For property owners exploring what's possible, we offer feasibility analysis,

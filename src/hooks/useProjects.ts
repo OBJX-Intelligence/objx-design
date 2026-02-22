@@ -2,6 +2,17 @@ import { useState, useEffect } from "react";
 import { openDB } from "idb";
 import projectData from "@/data/projects.json";
 
+export const PRACTICE_AREAS = [
+  "Missing Middle Residential",
+  "Custom Residential",
+  "Residential Interiors",
+  "Hospitality",
+  "Commercial Interiors",
+  "Conceptual Planning + Feasibility",
+] as const;
+
+export type PracticeArea = (typeof PRACTICE_AREAS)[number];
+
 export interface ProjectImage {
   url: string;
   cropX: number;    // 0–100, horizontal focus (default 50 = center)
@@ -20,7 +31,7 @@ export interface Project {
   year: string;
   orderIndex: number;
   published: boolean;
-  showOnLanding?: boolean;  // undefined = true (shown on landing by default)
+  showOnLanding?: boolean;  // undefined = false (must be explicitly enabled in admin)
 }
 
 /* ─── IndexedDB storage ──────────────────────────────── */
@@ -63,16 +74,33 @@ async function saveToDb(projects: Project[]): Promise<string | null> {
 
 /* ─── Migration helper ───────────────────────────────── */
 
+const CATEGORY_MIGRATION: Record<string, string> = {
+  Residential: "Custom Residential",
+  Commercial: "Commercial Interiors",
+  Consulting: "Conceptual Planning + Feasibility",
+};
+
 function migrateProject(p: any): Project {
-  if (!p.images || p.images.length === 0) {
-    return {
-      ...p,
-      images: p.imageUrl
-        ? [{ url: p.imageUrl, cropX: 50, cropY: 50, cropScale: 1 }]
-        : [],
-    };
+  const out = { ...p };
+
+  // Migrate legacy single-image to images array
+  if (!out.images || out.images.length === 0) {
+    out.images = out.imageUrl
+      ? [{ url: out.imageUrl, cropX: 50, cropY: 50, cropScale: 1 }]
+      : [];
   }
-  return p as Project;
+
+  // Migrate old category names to practice areas
+  if (out.category && CATEGORY_MIGRATION[out.category]) {
+    out.category = CATEGORY_MIGRATION[out.category];
+  }
+
+  // Default showOnLanding to false if missing
+  if (out.showOnLanding === undefined) {
+    out.showOnLanding = false;
+  }
+
+  return out as Project;
 }
 
 /* ─── Hook ───────────────────────────────────────────── */
@@ -119,9 +147,9 @@ export function useProjects() {
     .filter((p) => p.published)
     .sort((a, b) => a.orderIndex - b.orderIndex);
 
-  const featuredProjects = projects
-    .filter((p) => p.published && (p.showOnLanding ?? true))
-    .sort((a, b) => a.orderIndex - b.orderIndex);
+  const featuredProjects = PRACTICE_AREAS.map((area) =>
+    projects.find((p) => p.published && p.showOnLanding === true && p.category === area)
+  ).filter((p): p is Project => p !== undefined);
 
   function addProject(project: Omit<Project, "id" | "orderIndex">): Project {
     const newProject: Project = {

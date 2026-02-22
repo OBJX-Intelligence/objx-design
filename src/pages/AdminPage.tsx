@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { useProjects, type Project, type ProjectImage } from "@/hooks/useProjects";
+import { useProjects, PRACTICE_AREAS, type Project, type ProjectImage } from "@/hooks/useProjects";
 import {
   Trash2,
   Plus,
@@ -16,7 +16,6 @@ import {
   ImageIcon,
   Crop,
   X,
-  Layout,
 } from "lucide-react";
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "objxdesign2026";
@@ -521,8 +520,18 @@ function ProjectForm({
           <Input value={form.year} onChange={(e) => set("year", e.target.value)} placeholder="2025" />
         </div>
         <div className="space-y-1">
-          <label className="text-xs text-muted-foreground">Category</label>
-          <Input value={form.category} onChange={(e) => set("category", e.target.value)} placeholder="Residential" />
+          <label className="text-xs text-muted-foreground">Practice Area</label>
+          <select
+            value={form.category}
+            onChange={(e) => set("category", e.target.value)}
+            title="Practice Area"
+            className="w-full border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+          >
+            <option value="">Select practice area</option>
+            {PRACTICE_AREAS.map((area) => (
+              <option key={area} value={area}>{area}</option>
+            ))}
+          </select>
         </div>
         <div className="space-y-1">
           <label className="text-xs text-muted-foreground">Medium / Type</label>
@@ -739,24 +748,17 @@ function AdminPanel() {
                 <button
                   onClick={() =>
                     updateProject(project.id, {
-                      showOnLanding: !(project.showOnLanding ?? true),
+                      showOnLanding: !(project.showOnLanding ?? false),
                     })
                   }
-                  className="p-1.5 hover:bg-muted rounded transition-colors"
-                  title={
-                    (project.showOnLanding ?? true)
-                      ? "Remove from landing page"
-                      : "Add to landing page"
-                  }
+                  className={cn(
+                    "px-2 py-1 text-xs border rounded transition-colors",
+                    (project.showOnLanding ?? false)
+                      ? "border-foreground/30 text-foreground/80 bg-foreground/5"
+                      : "border-border/40 text-muted-foreground/50 hover:text-muted-foreground hover:border-border"
+                  )}
                 >
-                  <Layout
-                    className={cn(
-                      "w-4 h-4",
-                      (project.showOnLanding ?? true)
-                        ? "text-foreground/60"
-                        : "text-muted-foreground/30"
-                    )}
-                  />
+                  {(project.showOnLanding ?? false) ? "Landing: ON" : "Landing: OFF"}
                 </button>
 
                 {/* Edit */}
@@ -801,11 +803,6 @@ function AdminPanel() {
               {!project.published && (
                 <span className="text-xs text-muted-foreground border border-border/40 px-2 py-0.5 shrink-0">
                   hidden
-                </span>
-              )}
-              {!(project.showOnLanding ?? true) && (
-                <span className="text-xs text-muted-foreground border border-border/40 px-2 py-0.5 shrink-0">
-                  landing: off
                 </span>
               )}
             </div>
