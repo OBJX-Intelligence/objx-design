@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1",
+    "title": "Sand",
+    "description": "A study in warmth and tension — golden undercurrents beneath a sweeping arc of shadow. Inspired by desert light at the moment it breaks across stone.",
+    "imageUrl": "/images/sand.jpg",
+    "category": "Painting",
+    "medium": "Oil on canvas",
+    "year": "2025",
+    "orderIndex": 1,
+    "published": true
+  },
+  {
+    "id": "2",
+    "title": "Satellite",
+    "description": "Celestial mechanics translated to surface. The cold geometry of orbit rendered in deep blacks and silver — stillness at the edge of atmosphere.",
+    "imageUrl": "/images/satellite.jpg",
+    "category": "Painting",
+    "medium": "Oil on canvas",
+    "year": "2025",
+    "orderIndex": 2,
+    "published": true
+  },
+  {
+    "id": "3",
+    "title": "Ocean",
+    "description": "Fluid dynamics caught in resin — cerulean and cobalt layered in geological time. The depth of water made tactile.",
+    "imageUrl": "/images/ocean.jpg",
+    "category": "Painting",
+    "medium": "Resin on panel",
+    "year": "2025",
+    "orderIndex": 3,
+    "published": true
+  },
+  {
+    "id": "4",
+    "title": "Fresa",
+    "description": "Sweetness amplified into abstraction. Pink bleeds into magenta, edges dissolving like sugar in heat.",
+    "imageUrl": "/images/fresa.jpg",
+    "category": "Painting",
+    "medium": "Acrylic on canvas",
+    "year": "2024",
+    "orderIndex": 4,
+    "published": true
+  },
+  {
+    "id": "5",
+    "title": "Sangre",
+    "description": "Deep crimson pools and ripples — the visceral energy of movement captured at the moment of impact.",
+    "imageUrl": "/images/sangre.jpg",
+    "category": "Painting",
+    "medium": "Oil on canvas",
+    "year": "2024",
+    "orderIndex": 5,
+    "published": true
+  },
+  {
+    "id": "6",
+    "title": "Dune",
+    "description": "Topographic shadows folded into each other — the cartography of sand written in light and dark.",
+    "imageUrl": "/images/dune.jpg",
+    "category": "Painting",
+    "medium": "Graphite and oil",
+    "year": "2024",
+    "orderIndex": 6,
+    "published": true
+  },
+  {
+    "id": "7",
+    "title": "Nuclear",
+    "description": "Acid green descends into the void. A single drip as statement — energy contained, barely.",
+    "imageUrl": "/images/nuclear.jpg",
+    "category": "Painting",
+    "medium": "Enamel on panel",
+    "year": "2024",
+    "orderIndex": 7,
+    "published": true
+  },
+  {
+    "id": "8",
+    "title": "Tide",
+    "description": "The perpetual exchange between sand and sea — textural layers built up and eroded in the same gesture.",
+    "imageUrl": "/images/tide.jpg",
+    "category": "Painting",
+    "medium": "Mixed media",
+    "year": "2024",
+    "orderIndex": 8,
+    "published": true
+  }
+]

@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* OBJX Design — neutral palette, always light */
+    --background: 0 0% 91%;          /* #E8E8E8 — site gray from screenshots */
+    --foreground: 0 0% 9%;           /* near-black text */
+
+    --card: 0 0% 86%;                /* slightly darker card surface */
+    --card-foreground: 0 0% 9%;
+
+    --popover: 0 0% 88%;
+    --popover-foreground: 0 0% 9%;
+
+    --primary: 0 0% 9%;              /* black as primary accent */
+    --primary-foreground: 0 0% 91%;
+
+    --secondary: 0 0% 85%;
+    --secondary-foreground: 0 0% 9%;
+
+    --muted: 0 0% 85%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 0 0% 82%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 78%;
+    --input: 0 0% 85%;
+    --ring: 0 0% 9%;
+
+    --radius: 0rem;                  /* sharp corners — minimal aesthetic */
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Urbanist", system-ui, sans-serif;
+  }
+}
+
+/* Minimal scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: hsl(0 0% 60%);
+  border-radius: 2px;
+}
+
+/* Flip card 3D */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
