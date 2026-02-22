@@ -60,6 +60,19 @@ export function useProjects() {
     saveProjects(updated);
   }
 
+  function reorderProject(id: string, direction: "up" | "down") {
+    const sorted = [...projects].sort((a, b) => a.orderIndex - b.orderIndex);
+    const idx = sorted.findIndex((p) => p.id === id);
+    const swapIdx = direction === "up" ? idx - 1 : idx + 1;
+    if (swapIdx < 0 || swapIdx >= sorted.length) return;
+    const a = projects.findIndex((p) => p.id === sorted[idx].id);
+    const b = projects.findIndex((p) => p.id === sorted[swapIdx].id);
+    const updated = projects.map((p) => ({ ...p }));
+    [updated[a].orderIndex, updated[b].orderIndex] = [updated[b].orderIndex, updated[a].orderIndex];
+    setProjects(updated);
+    saveProjects(updated);
+  }
+
   function exportJson(): void {
     const blob = new Blob([JSON.stringify(projects, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
@@ -70,5 +83,5 @@ export function useProjects() {
     URL.revokeObjectURL(url);
   }
 
-  return { projects, publishedProjects, addProject, updateProject, deleteProject, exportJson };
+  return { projects, publishedProjects, addProject, updateProject, deleteProject, reorderProject, exportJson };
 }
