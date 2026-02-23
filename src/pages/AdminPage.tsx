@@ -587,6 +587,7 @@ function AdminPanel() {
     deleteCategory,
     reorderCategory,
     exportJson,
+    exportForDeploy,
     saveError,
     clearSaveError,
   } = useProjects();
@@ -594,6 +595,7 @@ function AdminPanel() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
   const [savedId, setSavedId] = useState<string | null>(null);
+  const [exporting, setExporting] = useState(false);
   const [addingCategory, setAddingCategory] = useState(false);
   const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null);
   const [newCatName, setNewCatName] = useState("");
@@ -605,6 +607,11 @@ function AdminPanel() {
   function confirmSave(id: string) {
     setSavedId(id);
     setTimeout(() => setSavedId((cur) => (cur === id ? null : cur)), 2000);
+  }
+
+  async function handleDeployExport() {
+    setExporting(true);
+    try { await exportForDeploy(); } finally { setExporting(false); }
   }
 
   const sortedIds = [...projects]
@@ -653,9 +660,13 @@ function AdminPanel() {
             Work
             <ExternalLink className="w-3 h-3" />
           </a>
-          <Button type="button" size="sm" variant="outline" onClick={exportJson} className="gap-1.5">
+          <Button type="button" size="sm" variant="outline" onClick={handleDeployExport} disabled={exporting} className="gap-1.5">
             <Download className="w-3.5 h-3.5" />
-            Export JSON
+            {exporting ? "Packaging..." : "Deploy Package"}
+          </Button>
+          <Button type="button" size="sm" variant="ghost" onClick={exportJson} className="gap-1.5 text-muted-foreground">
+            <Download className="w-3.5 h-3.5" />
+            Raw JSON
           </Button>
           <Button type="button" size="sm" onClick={() => setAdding(true)} className="gap-1.5">
             <Plus className="w-3.5 h-3.5" />
@@ -1008,8 +1019,11 @@ function AdminPanel() {
       </div>
 
       <p className="text-xs text-muted-foreground pt-4 border-t border-border/40">
-        Changes auto-save to your browser. Click "Export JSON" and replace{" "}
-        <code className="bg-muted px-1">src/data/projects.json</code> then push to make them permanent.
+        Changes auto-save to your browser. Click "Deploy Package" to download a ZIP.
+        Unzip and copy <code className="bg-muted px-1">projects.json</code> to{" "}
+        <code className="bg-muted px-1">src/data/</code> and{" "}
+        <code className="bg-muted px-1">images/</code> to{" "}
+        <code className="bg-muted px-1">public/images/</code>, then git push.
       </p>
     </div>
   );

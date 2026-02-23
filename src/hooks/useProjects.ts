@@ -102,6 +102,30 @@ async function saveCategoriesToDb(categories: Category[]): Promise<string | null
   }
 }
 
+/* ─── Deploy export helpers ──────────────────────────── */
+
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").substring(0, 60);
+}
+
+function getExtFromDataUrl(dataUrl: string): string {
+  const match = dataUrl.match(/^data:image\/(\w+);/);
+  if (!match) return "jpg";
+  return match[1] === "jpeg" ? "jpg" : match[1];
+}
+
+function base64ToBytes(dataUrl: string): Uint8Array {
+  const base64 = dataUrl.split(",")[1];
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+function imageFilename(project: Project, idx: number, dataUrl: string): string {
+  return `${slugify(project.title)}-${project.id.slice(-4)}-${idx + 1}.${getExtFromDataUrl(dataUrl)}`;
+}
+
 /* ─── Migration helper ───────────────────────────────── */
 
 const CATEGORY_MIGRATION: Record<string, string> = {
@@ -287,6 +311,35 @@ export function useProjects() {
     URL.revokeObjectURL(url);
   }
 
+  async function exportForDeploy(): Promise<void> {
+    const JSZip = (await import("jszip")).default;
+    const zip = new JSZip();
+    const imagesFolder = zip.folder("images")!;
+
+    const exportProjects = projects.map((p) => {
+      const exportImages = p.images.map((img, idx) => {
+        if (img.url.startsWith("data:")) {
+          const filename = imageFilename(p, idx, img.url);
+          imagesFolder.file(filename, base64ToBytes(img.url));
+          return { ...img, url: `/images/${filename}` };
+        }
+        return img; // external URL or already a file path — pass through
+      });
+      return { ...p, images: exportImages, imageUrl: exportImages[0]?.url ?? "" };
+    });
+
+    zip.file("projects.json", JSON.stringify(exportProjects, null, 2));
+    zip.file("categories.json", JSON.stringify(sortedCategories, null, 2));
+
+    const blob = await zip.generateAsync({ type: "blob" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `objx-deploy-${new Date().toISOString().split("T")[0]}.zip`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   return {
     projects,
     publishedProjects,
@@ -303,5 +356,6 @@ export function useProjects() {
     deleteCategory,
     reorderCategory,
     exportJson,
+    exportForDeploy,
   };
 }
