@@ -1,12 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { useProjects, type Project, type ProjectImage, type Category } from "@/hooks/useProjects";
+import { useProjects, setAdminToken, type Project, type ProjectImage, type Category } from "@/hooks/useProjects";
 import {
   Trash2,
   Plus,
   Download,
+  Upload,
   Eye,
   EyeOff,
   Lock,
@@ -16,6 +17,7 @@ import {
   ImageIcon,
   Crop,
   X,
+  RefreshCw,
 } from "lucide-react";
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "GOODtimes2025!";
@@ -34,6 +36,8 @@ function LoginScreen({ onAuth }: { onAuth: () => void }) {
     e.preventDefault();
     if (value === ADMIN_PASSWORD) {
       sessionStorage.setItem(SESSION_KEY, "1");
+      // Store the password as R2 admin token (same value used for Bearer auth)
+      setAdminToken(value);
       onAuth();
     } else {
       setError(true);
@@ -588,6 +592,8 @@ function AdminPanel() {
     reorderCategory,
     exportJson,
     exportForDeploy,
+    publishToR2,
+    syncFromR2,
     saveError,
     clearSaveError,
   } = useProjects();
@@ -596,6 +602,9 @@ function AdminPanel() {
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
   const [savedId, setSavedId] = useState<string | null>(null);
   const [exporting, setExporting] = useState(false);
+  const [publishing, setPublishing] = useState(false);
+  const [publishStatus, setPublishStatus] = useState<string | null>(null);
+  const [syncing, setSyncing] = useState(false);
   const [addingCategory, setAddingCategory] = useState(false);
   const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null);
   const [newCatName, setNewCatName] = useState("");
@@ -603,6 +612,14 @@ function AdminPanel() {
   const [editCatName, setEditCatName] = useState("");
   const [editCatDesc, setEditCatDesc] = useState("");
   const [confirmDeleteCat, setConfirmDeleteCat] = useState<string | null>(null);
+
+  // Ensure admin token is set if already authed (page refresh case)
+  useEffect(() => {
+    if (!sessionStorage.getItem("objxdesign_admin_token")) {
+      // Re-set token from password (user is already authed via SESSION_KEY)
+      setAdminToken(ADMIN_PASSWORD);
+    }
+  }, []);
 
   function confirmSave(id: string) {
     setSavedId(id);
@@ -612,6 +629,37 @@ function AdminPanel() {
   async function handleDeployExport() {
     setExporting(true);
     try { await exportForDeploy(); } finally { setExporting(false); }
+  }
+
+  async function handlePublish() {
+    setPublishing(true);
+    setPublishStatus(null);
+    try {
+      await publishToR2();
+      setPublishStatus("Published successfully! Changes are now live.");
+      setTimeout(() => setPublishStatus(null), 4000);
+    } catch (err: any) {
+      setPublishStatus(`Publish failed: ${err.message}`);
+    } finally {
+      setPublishing(false);
+    }
+  }
+
+  async function handleSync() {
+    setSyncing(true);
+    try {
+      const result = await syncFromR2();
+      if (result.projects || result.categories) {
+        setPublishStatus("Synced from live site.");
+      } else {
+        setPublishStatus("No live data found — using local data.");
+      }
+      setTimeout(() => setPublishStatus(null), 3000);
+    } catch {
+      setPublishStatus("Sync failed — check connection.");
+    } finally {
+      setSyncing(false);
+    }
   }
 
   const sortedIds = [...projects]
@@ -627,6 +675,26 @@ function AdminPanel() {
           <button
             type="button"
             onClick={clearSaveError}
+            className="shrink-0 hover:opacity-60 transition-opacity"
+            aria-label="Dismiss"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+      {/* Publish status banner */}
+      {publishStatus && (
+        <div className={cn(
+          "px-4 py-3 text-xs flex items-start justify-between gap-4 border",
+          publishStatus.includes("failed") || publishStatus.includes("Failed")
+            ? "border-destructive/40 bg-destructive/5 text-destructive"
+            : "border-green-600/40 bg-green-600/5 text-green-700"
+        )}>
+          <span>{publishStatus}</span>
+          <button
+            type="button"
+            onClick={() => setPublishStatus(null)}
             className="shrink-0 hover:opacity-60 transition-opacity"
             aria-label="Dismiss"
           >
@@ -660,13 +728,17 @@ function AdminPanel() {
             Work
             <ExternalLink className="w-3 h-3" />
           </a>
-          <Button type="button" size="sm" variant="outline" onClick={handleDeployExport} disabled={exporting} className="gap-1.5">
-            <Download className="w-3.5 h-3.5" />
-            {exporting ? "Packaging..." : "Deploy Package"}
+          <Button type="button" size="sm" onClick={handlePublish} disabled={publishing || syncing} className="gap-1.5">
+            <Upload className="w-3.5 h-3.5" />
+            {publishing ? "Publishing..." : "Publish Changes"}
           </Button>
-          <Button type="button" size="sm" variant="ghost" onClick={exportJson} className="gap-1.5 text-muted-foreground">
+          <Button type="button" size="sm" variant="outline" onClick={handleSync} disabled={syncing || publishing} className="gap-1.5">
+            <RefreshCw className={cn("w-3.5 h-3.5", syncing && "animate-spin")} />
+            {syncing ? "Syncing..." : "Sync"}
+          </Button>
+          <Button type="button" size="sm" variant="ghost" onClick={handleDeployExport} disabled={exporting} className="gap-1.5 text-muted-foreground">
             <Download className="w-3.5 h-3.5" />
-            Raw JSON
+            {exporting ? "Packaging..." : "Export ZIP"}
           </Button>
           <Button type="button" size="sm" onClick={() => setAdding(true)} className="gap-1.5">
             <Plus className="w-3.5 h-3.5" />
@@ -1019,11 +1091,8 @@ function AdminPanel() {
       </div>
 
       <p className="text-xs text-muted-foreground pt-4 border-t border-border/40">
-        Changes auto-save to your browser. Click "Deploy Package" to download a ZIP.
-        Unzip and copy <code className="bg-muted px-1">projects.json</code> to{" "}
-        <code className="bg-muted px-1">src/data/</code> and{" "}
-        <code className="bg-muted px-1">images/</code> to{" "}
-        <code className="bg-muted px-1">public/images/</code>, then git push.
+        Changes auto-save to your browser. Click <strong>Publish Changes</strong> to push
+        directly to the live site. Use <strong>Sync</strong> to pull the latest from the live site.
       </p>
     </div>
   );

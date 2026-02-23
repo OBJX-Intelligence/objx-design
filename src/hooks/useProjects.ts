@@ -126,6 +126,104 @@ function imageFilename(project: Project, idx: number, dataUrl: string): string {
   return `${slugify(project.title)}-${project.id.slice(-4)}-${idx + 1}.${getExtFromDataUrl(dataUrl)}`;
 }
 
+/* ─── R2 API helpers ────────────────────────────────── */
+
+const ADMIN_TOKEN_KEY = "objxdesign_admin_token";
+
+function getAdminToken(): string | null {
+  return sessionStorage.getItem(ADMIN_TOKEN_KEY);
+}
+
+export function setAdminToken(token: string) {
+  sessionStorage.setItem(ADMIN_TOKEN_KEY, token);
+}
+
+async function r2Fetch(path: string, options?: RequestInit): Promise<Response> {
+  return fetch(path, options);
+}
+
+export async function uploadImageToR2(file: File, slug: string): Promise<string> {
+  const token = getAdminToken();
+  if (!token) throw new Error("Not authenticated for R2");
+
+  const form = new FormData();
+  form.append("file", file);
+  form.append("slug", slug);
+
+  const res = await r2Fetch("/api/upload", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${token}` },
+    body: form,
+  });
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: "Upload failed" }));
+    throw new Error(err.error || "Upload failed");
+  }
+
+  const data = await res.json();
+  return data.url;
+}
+
+async function publishDataToR2(
+  projects: Project[],
+  categories: Category[]
+): Promise<void> {
+  const token = getAdminToken();
+  if (!token) throw new Error("Not authenticated for R2");
+
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+
+  const [projRes, catRes] = await Promise.all([
+    r2Fetch("/api/projects", {
+      method: "PUT",
+      headers,
+      body: JSON.stringify(projects),
+    }),
+    r2Fetch("/api/categories", {
+      method: "PUT",
+      headers,
+      body: JSON.stringify(categories),
+    }),
+  ]);
+
+  if (!projRes.ok) {
+    const err = await projRes.json().catch(() => ({ error: "Save failed" }));
+    throw new Error(err.error || "Failed to publish projects");
+  }
+  if (!catRes.ok) {
+    const err = await catRes.json().catch(() => ({ error: "Save failed" }));
+    throw new Error(err.error || "Failed to publish categories");
+  }
+}
+
+async function fetchR2Projects(): Promise<Project[] | null> {
+  try {
+    const res = await r2Fetch("/api/projects");
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length === 0) return null;
+    return data.map(migrateProject);
+  } catch {
+    return null;
+  }
+}
+
+async function fetchR2Categories(): Promise<Category[] | null> {
+  try {
+    const res = await r2Fetch("/api/categories");
+    if (!res.ok) return null;
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length === 0) return null;
+    return data;
+  } catch {
+    return null;
+  }
+}
+
 /* ─── Migration helper ───────────────────────────────── */
 
 const CATEGORY_MIGRATION: Record<string, string> = {
@@ -340,6 +438,60 @@ export function useProjects() {
     URL.revokeObjectURL(url);
   }
 
+  /* ─── R2 Publish (direct save to live site) ────────── */
+
+  async function publishToR2(): Promise<void> {
+    // Upload any base64 images to R2 first
+    const updatedProjects = await Promise.all(
+      projects.map(async (p) => {
+        const slug = slugify(p.title);
+        const updatedImages = await Promise.all(
+          p.images.map(async (img) => {
+            if (img.url.startsWith("data:")) {
+              // Convert base64 to File and upload
+              const ext = getExtFromDataUrl(img.url);
+              const bytes = base64ToBytes(img.url);
+              const mimeType = `image/${ext === "jpg" ? "jpeg" : ext}`;
+              const blob = new Blob([bytes.buffer as ArrayBuffer], { type: mimeType });
+              const file = new File([blob], `${Date.now()}.${ext}`, {
+                type: blob.type,
+              });
+              const r2Url = await uploadImageToR2(file, slug);
+              return { ...img, url: r2Url };
+            }
+            return img;
+          })
+        );
+        return { ...p, images: updatedImages, imageUrl: updatedImages[0]?.url ?? "" };
+      })
+    );
+
+    // Save updated projects to local state (base64 replaced with R2 URLs)
+    save(updatedProjects);
+
+    // Push data to R2
+    await publishDataToR2(updatedProjects, categories);
+  }
+
+  async function syncFromR2(): Promise<{ projects: boolean; categories: boolean }> {
+    const result = { projects: false, categories: false };
+    const [r2Projects, r2Categories] = await Promise.all([
+      fetchR2Projects(),
+      fetchR2Categories(),
+    ]);
+    if (r2Projects) {
+      setProjects(r2Projects);
+      saveToDb(r2Projects);
+      result.projects = true;
+    }
+    if (r2Categories) {
+      setCategories(r2Categories);
+      saveCategoriesToDb(r2Categories);
+      result.categories = true;
+    }
+    return result;
+  }
+
   return {
     projects,
     publishedProjects,
@@ -357,5 +509,7 @@ export function useProjects() {
     reorderCategory,
     exportJson,
     exportForDeploy,
+    publishToR2,
+    syncFromR2,
   };
 }

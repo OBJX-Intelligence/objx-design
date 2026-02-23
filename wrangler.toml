@@ -1,0 +1,7 @@
+name = "objx-design"
+compatibility_date = "2024-12-01"
+pages_build_output_dir = "dist"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "objx-design-assets"
