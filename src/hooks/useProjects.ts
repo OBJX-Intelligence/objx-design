@@ -265,10 +265,28 @@ export function useProjects() {
   const [categories, setCategories] = useState<Category[]>(DEFAULT_CATEGORIES);
   const [saveError, setSaveError] = useState<string | null>(null);
 
-  // On mount: load from IndexedDB; migrate from localStorage if first run
+  // On mount: try R2 first (live published data), then IndexedDB (admin drafts), then static JSON
   useEffect(() => {
-    // Load projects
-    loadFromDb().then((stored) => {
+    async function loadData() {
+      // 1. Try fetching from R2 (the live published data source)
+      const [r2Projects, r2Categories] = await Promise.all([
+        fetchR2Projects(),
+        fetchR2Categories(),
+      ]);
+
+      if (r2Projects && r2Projects.length > 0) {
+        // R2 has published data — use it as the source of truth
+        setProjects(r2Projects);
+        saveToDb(r2Projects); // cache locally
+        if (r2Categories && r2Categories.length > 0) {
+          setCategories(r2Categories);
+          saveCategoriesToDb(r2Categories);
+        }
+        return;
+      }
+
+      // 2. No R2 data — fall back to IndexedDB (admin drafts or cached data)
+      const stored = await loadFromDb();
       if (stored) {
         setProjects(stored);
       } else {
@@ -282,21 +300,21 @@ export function useProjects() {
             localStorage.removeItem(LS_KEY);
           }
         } catch {
-          // ignore — fall back to JSON seed
+          // ignore — fall back to JSON seed (already set as initial state)
         }
       }
-    });
 
-    // Load categories
-    loadCategoriesFromDb().then((stored) => {
-      if (stored && stored.length > 0) {
-        setCategories(stored);
+      // Load categories from IndexedDB
+      const storedCats = await loadCategoriesFromDb();
+      if (storedCats && storedCats.length > 0) {
+        setCategories(storedCats);
       } else {
-        // First run: seed with defaults
         setCategories(DEFAULT_CATEGORIES);
         saveCategoriesToDb(DEFAULT_CATEGORIES);
       }
-    });
+    }
+
+    loadData();
   }, []);
 
   function save(updated: Project[]) {
