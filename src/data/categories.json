@@ -1,0 +1,38 @@
+[
+  {
+    "id": "seed-1",
+    "name": "Missing Middle Residential",
+    "description": "",
+    "orderIndex": 1
+  },
+  {
+    "id": "seed-2",
+    "name": "Custom Residential",
+    "description": "",
+    "orderIndex": 2
+  },
+  {
+    "id": "seed-3",
+    "name": "Residential Interiors",
+    "description": "",
+    "orderIndex": 3
+  },
+  {
+    "id": "seed-4",
+    "name": "Hospitality",
+    "description": "",
+    "orderIndex": 4
+  },
+  {
+    "id": "seed-5",
+    "name": "Commercial Interiors",
+    "description": "",
+    "orderIndex": 5
+  },
+  {
+    "id": "seed-6",
+    "name": "Conceptual Planning + Feasibility",
+    "description": "",
+    "orderIndex": 6
+  }
+]

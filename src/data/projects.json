@@ -1,105 +1,2281 @@
 [
   {
-    "id": "1",
-    "title": "Hillcrest ADU",
-    "description": "Detached 800 SF accessory dwelling unit. Full design and permitting through City of San Diego. Maximized buildable area within setback constraints.",
-    "imageUrl": "",
-    "images": [],
+    "id": "4383-rolando",
+    "title": "4383 Rolando",
+    "description": "",
+    "imageUrl": "/images/4383-rolando/DJI_0013.jpg",
+    "images": [
+      {
+        "url": "/images/4383-rolando/DJI_0013.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/4383-rolando/FN2 - view 1.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/4383-rolando/fn2 - view 2.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/4383-rolando/fn2 - view 3.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
     "category": "Missing Middle Residential",
-    "medium": "ADU - New Construction",
-    "year": "2025",
+    "medium": "",
+    "year": "",
     "orderIndex": 1,
     "published": true,
     "showOnLanding": false
   },
   {
-    "id": "2",
-    "title": "North Park Renovation",
-    "description": "Full gut renovation of a 1940s bungalow. Opened floor plan, restored original hardwood, added rear kitchen extension with new structural beam.",
-    "imageUrl": "",
-    "images": [],
-    "category": "Residential Interiors",
-    "medium": "Interior Renovation",
-    "year": "2025",
+    "id": "5675-soledad-mountain-rd",
+    "title": "5675 Soledad Mountain RD",
+    "description": "",
+    "imageUrl": "/images/5675-soledad-mountain-rd/240000947_0_7jY2bq_r.jpg",
+    "images": [
+      {
+        "url": "/images/5675-soledad-mountain-rd/240000947_0_7jY2bq_r.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/5675-soledad-mountain-rd/240000947_0_FmJ7Ib_l.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/5675-soledad-mountain-rd/240000947_0_JUaFyv_r.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/5675-soledad-mountain-rd/240000947_0_Ri6fZ2_r.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/5675-soledad-mountain-rd/240000947_0_RuIreV_r.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/5675-soledad-mountain-rd/240000947_0_uZ3MMr_r.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/5675-soledad-mountain-rd/240000947_0_ym7EmY_r.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/5675-soledad-mountain-rd/240000947_0_z6EUUa_r.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Custom Residential",
+    "medium": "",
+    "year": "",
     "orderIndex": 2,
     "published": true,
     "showOnLanding": false
   },
   {
-    "id": "3",
-    "title": "Bankers Hill Office",
-    "description": "2,400 SF professional office suite. Custom millwork, exposed structural steel, integrated AV and lighting design throughout.",
-    "imageUrl": "",
-    "images": [],
-    "category": "Commercial Interiors",
-    "medium": "Commercial Interior",
-    "year": "2025",
+    "id": "a1-development",
+    "title": "A1 Development",
+    "description": "",
+    "imageUrl": "/images/a1-development/View 1 - D02.jpg",
+    "images": [
+      {
+        "url": "/images/a1-development/View 1 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/a1-development/View 2 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/a1-development/View 3 D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/a1-development/View 4 D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/a1-development/View 5 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Conceptual Planning + Feasibility",
+    "medium": "",
+    "year": "",
     "orderIndex": 3,
     "published": true,
     "showOnLanding": false
   },
   {
-    "id": "4",
-    "title": "South Park Addition",
-    "description": "480 SF rear addition with new primary suite. Matched existing roofline, coordinated with structural and MEP consultants through full permit.",
-    "imageUrl": "",
-    "images": [],
-    "category": "Custom Residential",
-    "medium": "Addition - Permitted",
-    "year": "2025",
+    "id": "audio-impact",
+    "title": "Audio Impact",
+    "description": "",
+    "imageUrl": "/images/audio-impact/Audio Impact 1.jpg",
+    "images": [
+      {
+        "url": "/images/audio-impact/Audio Impact 1.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/audio-impact/Audio Impact 2.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/audio-impact/Audio Impact 3.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/audio-impact/Audio Impact 4.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Commercial Interiors",
+    "medium": "",
+    "year": "",
     "orderIndex": 4,
     "published": true,
     "showOnLanding": false
   },
   {
-    "id": "5",
-    "title": "Logan Heights Mixed-Use",
-    "description": "Ground-floor retail with 4 residential units above. ADU included on rear lot. Zoning variance secured for additional density.",
-    "imageUrl": "",
-    "images": [],
+    "id": "b-street-development",
+    "title": "B Street Development",
+    "description": "",
+    "imageUrl": "/images/b-street-development/1500x1000 (1).jpg",
+    "images": [
+      {
+        "url": "/images/b-street-development/1500x1000 (1).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/b-street-development/1500x1000 (2).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/b-street-development/1500x1000 (3).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/b-street-development/1500x1000 (4).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/b-street-development/1500x1000 (5).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/b-street-development/1500x1000 (6).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/b-street-development/1500x1000.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
     "category": "Missing Middle Residential",
-    "medium": "Mixed-Use - New Construction",
-    "year": "2025",
+    "medium": "",
+    "year": "",
     "orderIndex": 5,
     "published": true,
     "showOnLanding": false
   },
   {
-    "id": "6",
-    "title": "Mission Hills Kitchen",
-    "description": "Kitchen and dining expansion for a 1960s ranch house. Removed load-bearing wall, added skylight, custom cabinetry and new island throughout.",
-    "imageUrl": "",
-    "images": [],
-    "category": "Residential Interiors",
-    "medium": "Interior Renovation",
-    "year": "2025",
+    "id": "balboa-avenue-development",
+    "title": "Balboa Avenue Development",
+    "description": "",
+    "imageUrl": "/images/balboa-avenue-development/view 1 - D01.jpg",
+    "images": [
+      {
+        "url": "/images/balboa-avenue-development/view 1 - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/balboa-avenue-development/view 2 - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/balboa-avenue-development/view 3 - D02 op2.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/balboa-avenue-development/view 4 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Conceptual Planning + Feasibility",
+    "medium": "",
+    "year": "",
     "orderIndex": 6,
     "published": true,
     "showOnLanding": false
   },
   {
-    "id": "7",
-    "title": "Ocean Beach Duplex",
-    "description": "New detached duplex on a 5,000 SF lot. Coastal development permit coordination. Both units permitted for short-term rental.",
-    "imageUrl": "",
-    "images": [],
-    "category": "Custom Residential",
-    "medium": "New Construction",
-    "year": "2025",
+    "id": "bancroft-development",
+    "title": "Bancroft Development",
+    "description": "",
+    "imageUrl": "/images/bancroft-development/IV26002115_0 (1).jpg",
+    "images": [
+      {
+        "url": "/images/bancroft-development/IV26002115_0 (1).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/bancroft-development/IV26002115_12_0.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/bancroft-development/IV26002115_39_0.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/bancroft-development/IV26002115_3_0.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/bancroft-development/IV26002115_9_0.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/bancroft-development/genMid.IV26002115_1_0.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/bancroft-development/genMid.IV26002115_29_0.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
     "orderIndex": 7,
     "published": true,
     "showOnLanding": false
   },
   {
-    "id": "8",
-    "title": "Feasibility - Barrio Logan",
-    "description": "Zoning and feasibility analysis for a 12,000 SF mixed-use development. Identified by-right density options and variance opportunities.",
-    "imageUrl": "",
-    "images": [],
-    "category": "Conceptual Planning + Feasibility",
-    "medium": "Property Analysis",
-    "year": "2025",
+    "id": "bay-park-residence",
+    "title": "Bay Park Residence",
+    "description": "",
+    "imageUrl": "/images/bay-park-residence/GreatRoom D02.jpg",
+    "images": [
+      {
+        "url": "/images/bay-park-residence/GreatRoom D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/bay-park-residence/View 2 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/bay-park-residence/View 3 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Custom Residential",
+    "medium": "",
+    "year": "",
     "orderIndex": 8,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "broadway-development",
+    "title": "Broadway Development",
+    "description": "",
+    "imageUrl": "/images/broadway-development/Axo - FN.jpg",
+    "images": [
+      {
+        "url": "/images/broadway-development/Axo - FN.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/broadway-development/Inter - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/broadway-development/Site Plan - FN.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/broadway-development/View 1 - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/broadway-development/View 2 - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/broadway-development/View 3 - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/broadway-development/View4 - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/broadway-development/View5 - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 9,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "campanile",
+    "title": "Campanile",
+    "description": "",
+    "imageUrl": "/images/campanile/604234aeda8da0011299f3a7f1c4cfe8-uncropped_scaled_within_1536_1152.jpg",
+    "images": [
+      {
+        "url": "/images/campanile/604234aeda8da0011299f3a7f1c4cfe8-uncropped_scaled_within_1536_1152.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/campanile/cddf9b56706982f77ec1a0f86e77570e-uncropped_scaled_within_1536_1152.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/campanile/d561dd5055e4f9a852bf5b276c0ca289-uncropped_scaled_within_1536_1152.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/campanile/f1d8e5fa0186e1f5886aca6d9643d68f-uncropped_scaled_within_1536_1152.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 10,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "campanile-apts",
+    "title": "Campanile Apts",
+    "description": "",
+    "imageUrl": "/images/campanile-apts/View 1 - D02.jpg",
+    "images": [
+      {
+        "url": "/images/campanile-apts/View 1 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/campanile-apts/View 3 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/campanile-apts/View 4 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/campanile-apts/view 2 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/campanile-apts/view 5 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Conceptual Planning + Feasibility",
+    "medium": "",
+    "year": "",
+    "orderIndex": 11,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "coco-cabana",
+    "title": "Coco Cabana",
+    "description": "",
+    "imageUrl": "/images/coco-cabana/CocoCabana_KimberlyMotos-12.jpg",
+    "images": [
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-12.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-13.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-16.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-23.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-27.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-32.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-34.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-36.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-42.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-43.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-cabana/CocoCabana_KimberlyMotos-54.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 12,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "coco-maya",
+    "title": "Coco Maya",
+    "description": "",
+    "imageUrl": "/images/coco-maya/R1_Nuwan_Coco Maya_01.jpg",
+    "images": [
+      {
+        "url": "/images/coco-maya/R1_Nuwan_Coco Maya_01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-maya/R1_Nuwan_Coco Maya_03.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-maya/R1_Nuwan_Coco Maya_05.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-maya/R1_Nuwan_Coco Maya_06.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-maya/R1_Nuwan_Coco Maya_08.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-maya/R1_Nuwan_Coco Maya_09.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-maya/R1_Nuwan_Coco Maya_19.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-maya/R1_Nuwan_Coco Maya_30.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/coco-maya/R1_Nuwan_Coco Maya_34.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 13,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "del-monte",
+    "title": "Del Monte",
+    "description": "",
+    "imageUrl": "/images/del-monte/190037954_14_3.jpg",
+    "images": [
+      {
+        "url": "/images/del-monte/190037954_14_3.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/del-monte/190037954_9_3.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/del-monte/997A0001_2_3_4_5.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/del-monte/997A0026_27_28_29_30.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/del-monte/997A0046_47_48_49_50.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/del-monte/997A0121_2_3_4_5.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Residential Interiors",
+    "medium": "",
+    "year": "",
+    "orderIndex": 14,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "desert-living",
+    "title": "Desert Living",
+    "description": "",
+    "imageUrl": "/images/desert-living/Pool and Spa - View 1 - D02.jpg",
+    "images": [
+      {
+        "url": "/images/desert-living/Pool and Spa - View 1 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/desert-living/Pool and Spa - View 2 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/desert-living/View 1 - Ex 1 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/desert-living/View 4 - Inter - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Conceptual Planning + Feasibility",
+    "medium": "",
+    "year": "",
+    "orderIndex": 15,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "fort-oak",
+    "title": "Fort Oak",
+    "description": "",
+    "imageUrl": "/images/fort-oak/91.jpg",
+    "images": [
+      {
+        "url": "/images/fort-oak/91.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/94.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/95.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/96.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/97.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/98.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/99.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/DSCF5499-HDR.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/DSCF5521.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/DSCF5527.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/DSCF5544-HDR.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/fort-oak/DSCF5574-HDR.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 16,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "g-avenue-development",
+    "title": "G Avenue Development",
+    "description": "",
+    "imageUrl": "/images/g-avenue-development/View 1 - D02.jpg",
+    "images": [
+      {
+        "url": "/images/g-avenue-development/View 1 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/g-avenue-development/View 2 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/g-avenue-development/View 3 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/g-avenue-development/View 4 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/g-avenue-development/View 5 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/g-avenue-development/View 6 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/g-avenue-development/View 7 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/g-avenue-development/View 8 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 17,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "gaslamp-lighter",
+    "title": "Gaslamp Lighter",
+    "description": "",
+    "imageUrl": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_01 copy.jpg",
+    "images": [
+      {
+        "url": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_01 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_05.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_07.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_09 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_11.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_12.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_14.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_15 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gaslamp-lighter/R3_TheGaslamplighter_IMG_18 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 18,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "gtc-office",
+    "title": "GTC Office",
+    "description": "",
+    "imageUrl": "/images/gtc-office/GTC Office 1.jpg",
+    "images": [
+      {
+        "url": "/images/gtc-office/GTC Office 1.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gtc-office/GTC Office 2.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gtc-office/GTC Office 3.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gtc-office/GTC Office 4.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gtc-office/GTC Office 5.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gtc-office/GTC Office 6.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gtc-office/GTC Office 7.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gtc-office/GTC Office 8.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/gtc-office/IMG_5078.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Commercial Interiors",
+    "medium": "",
+    "year": "",
+    "orderIndex": 19,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "guild-hotel-lobby",
+    "title": "Guild Hotel Lobby",
+    "description": "",
+    "imageUrl": "/images/guild-hotel-lobby/DSCF4334.jpg",
+    "images": [
+      {
+        "url": "/images/guild-hotel-lobby/DSCF4334.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/DSCF4341.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/DSCF4348.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/DSCF4349.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/DSCF4357.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/DSCF4359.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/IMG_6169.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/IMG_6199.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/IMG_6226.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/IMG_6237.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/IMG_6261.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/guild-hotel-lobby/IMG_6278.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 20,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "imperial-development",
+    "title": "Imperial Development",
+    "description": "",
+    "imageUrl": "/images/imperial-development/391e4f4a4364a262bd9a2ffab5e751d6.jpg",
+    "images": [
+      {
+        "url": "/images/imperial-development/391e4f4a4364a262bd9a2ffab5e751d6.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/imperial-development/475003ce78dbbf7fe2fa9ea07d32abfe.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/imperial-development/4e1170279e9dca7715a99b30c4c2a8b2.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/imperial-development/677c089c48a975202d88c21d5bc43ffe.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/imperial-development/98236bcff6158cf4046321653426bd09.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 21,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "ivy-street-co-work",
+    "title": "Ivy Street Co Work",
+    "description": "",
+    "imageUrl": "/images/ivy-street-co-work/DSCF4315-HDR.jpg",
+    "images": [
+      {
+        "url": "/images/ivy-street-co-work/DSCF4315-HDR.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ivy-street-co-work/DSCF4320-HDR.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ivy-street-co-work/DSCF4325-HDR.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ivy-street-co-work/DSCF4337-HDR.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ivy-street-co-work/DSCF4422-HDR.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ivy-street-co-work/DSCF4440.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Commercial Interiors",
+    "medium": "",
+    "year": "",
+    "orderIndex": 22,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "marylane-development",
+    "title": "Marylane Development",
+    "description": "",
+    "imageUrl": "/images/marylane-development/230022506_18_4.jpg",
+    "images": [
+      {
+        "url": "/images/marylane-development/230022506_18_4.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/marylane-development/230022506_9_4.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/marylane-development/genMid.230022506_7_4.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/marylane-development/genMid.230022506_8_4.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 23,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "mesita-development",
+    "title": "Mesita Development",
+    "description": "",
+    "imageUrl": "/images/mesita-development/Exterior 1 - D02.jpg",
+    "images": [
+      {
+        "url": "/images/mesita-development/Exterior 1 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/mesita-development/Exterior 2 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/mesita-development/Exterior 3 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/mesita-development/Inter - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 24,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "missionxgarnet",
+    "title": "MissionXGarnet",
+    "description": "",
+    "imageUrl": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (1 of 39) (Large).jpg",
+    "images": [
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (1 of 39) (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (1 of 39).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (14 of 39)  edit (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (14 of 39) (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (16 of 39) edit (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (3 of 39) (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (3 of 39) edit (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (4 of 39) (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (6 of 39) (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (7 of 39) edit (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/MissionGarnet_EaterSD_KimberlyMotos (7 of 39) edit.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/mg-1 (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/mg-2 (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/mg-3 (Large).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/missionxgarnet/mg-3.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 25,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "montezuma-concept",
+    "title": "Montezuma Concept",
+    "description": "",
+    "imageUrl": "/images/montezuma-concept/Aerial - op1.jpg",
+    "images": [
+      {
+        "url": "/images/montezuma-concept/Aerial - op1.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/montezuma-concept/View 1 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/montezuma-concept/View 2 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/montezuma-concept/View 3 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Conceptual Planning + Feasibility",
+    "medium": "",
+    "year": "",
+    "orderIndex": 26,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "murdock-residence",
+    "title": "Murdock Residence",
+    "description": "",
+    "imageUrl": "/images/murdock-residence/Frontview - D02.jpg",
+    "images": [
+      {
+        "url": "/images/murdock-residence/Frontview - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/murdock-residence/Inter - View 1 - LD New.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/murdock-residence/Inter - View 2 - LD New.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/murdock-residence/Rearview - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Custom Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 27,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "n-mountain",
+    "title": "N Mountain",
+    "description": "",
+    "imageUrl": "/images/n-mountain/NDP2407544_3.jpg",
+    "images": [
+      {
+        "url": "/images/n-mountain/NDP2407544_3.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/n-mountain/genMid.NDP2407544_1_3.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Custom Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 28,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "nc-18-apartments",
+    "title": "NC 18 Apartments",
+    "description": "",
+    "imageUrl": "/images/nc-18-apartments/1224-Exterior-Scott-retouch-EI-104-CROPPED@72dpi.jpg",
+    "images": [
+      {
+        "url": "/images/nc-18-apartments/1224-Exterior-Scott-retouch-EI-104-CROPPED@72dpi.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/nc-18-apartments/1306-corner_cropped-EI-102_at-72dpi.jpeg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/nc-18-apartments/1306_adjusted_EI-103-copy.v2_cropped.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/nc-18-apartments/Screenshot 2026-02-23 055056.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 29,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "nimitz-crossing-lofts",
+    "title": "Nimitz Crossing Lofts",
+    "description": "",
+    "imageUrl": "/images/nimitz-crossing-lofts/Nimitz-Crossing-104-20.jpg",
+    "images": [
+      {
+        "url": "/images/nimitz-crossing-lofts/Nimitz-Crossing-104-20.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/nimitz-crossing-lofts/Nimitz-Crossing-104-25.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/nimitz-crossing-lofts/Nimitz-Crossing-109-22.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/nimitz-crossing-lofts/Nimitz-Crossing-109-27.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/nimitz-crossing-lofts/Nimitz-Crossing-109-8-RETOUCHED.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Residential Interiors",
+    "medium": "",
+    "year": "",
+    "orderIndex": 30,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "ocean-breeze",
+    "title": "Ocean Breeze",
+    "description": "",
+    "imageUrl": "/images/ocean-breeze/01.jpg",
+    "images": [
+      {
+        "url": "/images/ocean-breeze/01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ocean-breeze/large (1).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ocean-breeze/large (2).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ocean-breeze/large (3).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ocean-breeze/large (4).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ocean-breeze/large (5).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ocean-breeze/large (6).jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/ocean-breeze/large.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 31,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "pennsylvania-development",
+    "title": "Pennsylvania Development",
+    "description": "",
+    "imageUrl": "/images/pennsylvania-development/04.jpg",
+    "images": [
+      {
+        "url": "/images/pennsylvania-development/04.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/pennsylvania-development/F_exterior_with_corections_d.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/pennsylvania-development/additional_angle_1.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/pennsylvania-development/additional_angle_2.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 32,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "poke-via",
+    "title": "Poke Via",
+    "description": "",
+    "imageUrl": "/images/poke-via/DSCF6439.jpg",
+    "images": [
+      {
+        "url": "/images/poke-via/DSCF6439.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/poke-via/DSCF6448.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/poke-via/DSCF6457.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/poke-via/DSCF6475.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/poke-via/DSCF6493.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/poke-via/DSCF6502.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/poke-via/DSCF6520.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/poke-via/DSCF6556.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/poke-via/IMG_6853.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 33,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "potomac-development",
+    "title": "Potomac Development",
+    "description": "",
+    "imageUrl": "/images/potomac-development/Aerial - D01.jpg",
+    "images": [
+      {
+        "url": "/images/potomac-development/Aerial - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/potomac-development/Exteriol-View1-D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/potomac-development/Exteriol-View2-D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/potomac-development/Interior - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Missing Middle Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 34,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "q-a",
+    "title": "Q&A",
+    "description": "",
+    "imageUrl": "/images/q-a/View 10 - D01.jpg",
+    "images": [
+      {
+        "url": "/images/q-a/View 10 - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/q-a/View 7 - D021.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/q-a/View 8 - D02.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/q-a/View 9 - D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 35,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "rare-society-solana-beach",
+    "title": "Rare Society - Solana Beach",
+    "description": "",
+    "imageUrl": "/images/rare-society-solana-beach/DSCF0124.jpg",
+    "images": [
+      {
+        "url": "/images/rare-society-solana-beach/DSCF0124.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-solana-beach/DSCF0153.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-solana-beach/DSCF0181.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-solana-beach/DSCF0193.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-solana-beach/IMG_9557.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-solana-beach/IMG_9560.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-solana-beach/IMG_9594.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-solana-beach/IMG_9613.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-solana-beach/IMG_9615.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-solana-beach/IMG_9673.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 36,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "rare-society-san-clemente",
+    "title": "Rare Society San Clemente",
+    "description": "",
+    "imageUrl": "/images/rare-society-san-clemente/DSCF2388 copy.jpg",
+    "images": [
+      {
+        "url": "/images/rare-society-san-clemente/DSCF2388 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-san-clemente/DSCF2393 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-san-clemente/DSCF2399 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-san-clemente/DSCF2405 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-san-clemente/DSCF2410 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-san-clemente/DSCF2425 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-san-clemente/IMG_2759 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-san-clemente/IMG_2768 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 37,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "rare-society-santa-barbara",
+    "title": "Rare Society Santa Barbara",
+    "description": "",
+    "imageUrl": "/images/rare-society-santa-barbara/20220713Rare_Society0012 copy.jpg",
+    "images": [
+      {
+        "url": "/images/rare-society-santa-barbara/20220713Rare_Society0012 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-santa-barbara/20220713Rare_Society0034 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-santa-barbara/20220713Rare_Society0052 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-santa-barbara/20220713Rare_Society0285 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-santa-barbara/20220713Rare_Society0313 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-santa-barbara/20220713Rare_Society0318 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-santa-barbara/Rare_Society_Opening_Night01 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-santa-barbara/Rare_Society_Opening_Night02 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-santa-barbara/Rare_Society_Opening_Night03 copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-santa-barbara/Rare_Society_Opening_Night04-web copy.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 38,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "rare-society-seattle",
+    "title": "Rare Society Seattle",
+    "description": "",
+    "imageUrl": "/images/rare-society-seattle/DSCF4949.jpg",
+    "images": [
+      {
+        "url": "/images/rare-society-seattle/DSCF4949.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/DSCF4955.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/DSCF4958.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/DSCF4962.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/IMG_5574.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/IMG_5619.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/IMG_5648.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/IMG_5664.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/IMG_5687.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/IMG_5699.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/IMG_5709.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/IMG_5724.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/rare-society-seattle/IMG_5749.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Hospitality",
+    "medium": "",
+    "year": "",
+    "orderIndex": 39,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "remington",
+    "title": "Remington",
+    "description": "",
+    "imageUrl": "/images/remington/2598051710f571a294b266f8031ac0d8-uncropped_scaled_within_1536_1152.jpg",
+    "images": [
+      {
+        "url": "/images/remington/2598051710f571a294b266f8031ac0d8-uncropped_scaled_within_1536_1152.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/remington/63d4ffb184135f6958caaa577baab03f-cc_ft_960.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/remington/7920923d89a3a70452f3445de27c74b4-uncropped_scaled_within_1536_1152.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/remington/dd4e73abddec60305121ec38e356ee34-uncropped_scaled_within_1536_1152.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/remington/e148964fcbdf4703a43fbc1b1f14ac3e-uncropped_scaled_within_1536_1152.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/remington/fb5764aa036b6e088c0e0bd2e03c3ba3-uncropped_scaled_within_1536_1152.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/remington/ff36ed4398dd2f9d8b36cc6da6f8a0f7-uncropped_scaled_within_1536_1152.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Custom Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 40,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "romo-residence",
+    "title": "Romo Residence",
+    "description": "",
+    "imageUrl": "/images/romo-residence/Backyard D01.jpg",
+    "images": [
+      {
+        "url": "/images/romo-residence/Backyard D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/romo-residence/Exterior Front 1 D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/romo-residence/Exterior Front 2 - OP1 D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/romo-residence/Inter D01.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Custom Residential",
+    "medium": "",
+    "year": "",
+    "orderIndex": 41,
+    "published": true,
+    "showOnLanding": false
+  },
+  {
+    "id": "watkins-environmental",
+    "title": "Watkins Environmental",
+    "description": "",
+    "imageUrl": "/images/watkins-environmental/View 1 - FN UD.jpg",
+    "images": [
+      {
+        "url": "/images/watkins-environmental/View 1 - FN UD.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/watkins-environmental/View 2 - FN UD.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/watkins-environmental/View 3 - FN UD.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/watkins-environmental/View 4 - FN UD.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/watkins-environmental/View 5 - FN UD.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/watkins-environmental/View 6 - FN UD.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/watkins-environmental/View 7 - FN UD.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      },
+      {
+        "url": "/images/watkins-environmental/View 9 - FN UD.jpg",
+        "cropX": 50,
+        "cropY": 50,
+        "cropScale": 1
+      }
+    ],
+    "category": "Commercial Interiors",
+    "medium": "",
+    "year": "",
+    "orderIndex": 42,
     "published": true,
     "showOnLanding": false
   }
