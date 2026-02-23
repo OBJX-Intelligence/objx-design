@@ -4,7 +4,10 @@ import { IntelligenceBridge } from "@/components/IntelligenceBridge";
 import { useProjects } from "@/hooks/useProjects";
 
 export function LandingPage() {
-  const { featuredProjects } = useProjects();
+  const { featuredProjects, categories } = useProjects();
+  const categoryDescriptions = new Map(
+    categories.filter((c) => c.description).map((c) => [c.name, c.description])
+  );
 
   return (
     <main>
@@ -41,7 +44,7 @@ export function LandingPage() {
 
       {/* ─── Gallery Snippet ──────────────────────────────── */}
       <section className="max-w-6xl mx-auto px-6 sm:px-10 pb-24">
-        <GalleryGrid projects={featuredProjects} showViewAll showCategory />
+        <GalleryGrid projects={featuredProjects} showViewAll showCategory categoryDescriptions={categoryDescriptions} />
       </section>
 
       {/* ─── Intelligence Bridge ──────────────────────────── */}

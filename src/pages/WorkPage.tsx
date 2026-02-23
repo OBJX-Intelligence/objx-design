@@ -28,9 +28,8 @@ export function WorkPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: i * 0.07 }}
-            style={{ minHeight: 380 }}
           >
-            <FlipCard project={project} className="h-full" style={{ minHeight: 380 }} />
+            <FlipCard project={project} />
           </motion.div>
         ))}
       </div>

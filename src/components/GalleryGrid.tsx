@@ -6,45 +6,64 @@ interface GalleryGridProps {
   limit?: number;
   showViewAll?: boolean;
   showCategory?: boolean;
+  categoryDescriptions?: Map<string, string>;
 }
 
-export function GalleryGrid({ projects, limit, showViewAll = false, showCategory = false }: GalleryGridProps) {
+export function GalleryGrid({
+  projects,
+  limit,
+  showViewAll = false,
+  showCategory = false,
+  categoryDescriptions,
+}: GalleryGridProps) {
   const displayed = limit ? projects.slice(0, limit) : projects;
 
   return (
     <div className="space-y-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {displayed.map((project) => (
-          <div key={project.id} className="group space-y-3">
-            <div className="overflow-hidden bg-card aspect-[4/5]">
-              {(() => {
-                const img = project.images[0];
-                const src = img?.url ?? project.imageUrl;
-                return src ? (
-                  <img
-                    src={src}
-                    alt={project.title}
-                    className="w-full h-full transition-transform duration-500 group-hover:scale-[1.03]"
-                    style={{
-                      objectFit: "cover",
-                      objectPosition: img ? `${img.cropX}% ${img.cropY}%` : "50% 50%",
-                      transform: img && img.cropScale !== 1 ? `scale(${img.cropScale})` : undefined,
-                      transformOrigin: "50% 50%",
-                    }}
-                    loading="lazy"
-                  />
-                ) : (
-                  <div className="w-full h-full bg-muted flex items-center justify-center">
-                    <span className="text-muted-foreground text-xs">{project.title}</span>
+        {displayed.map((project) => {
+          const desc = categoryDescriptions?.get(project.category);
+          return (
+            <div key={project.id} className="group space-y-3">
+              <div className="overflow-hidden bg-card aspect-[4/5] relative">
+                {(() => {
+                  const img = project.images[0];
+                  const src = img?.url ?? project.imageUrl;
+                  return src ? (
+                    <img
+                      src={src}
+                      alt={project.title}
+                      className="w-full h-full transition-transform duration-500 group-hover:scale-[1.03]"
+                      style={{
+                        objectFit: "cover",
+                        objectPosition: img ? `${img.cropX}% ${img.cropY}%` : "50% 50%",
+                        transform: img && img.cropScale !== 1 ? `scale(${img.cropScale})` : undefined,
+                        transformOrigin: "50% 50%",
+                      }}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-muted flex items-center justify-center">
+                      <span className="text-muted-foreground text-xs">{project.title}</span>
+                    </div>
+                  );
+                })()}
+
+                {/* Hover overlay with category description */}
+                {desc && (
+                  <div className="absolute inset-0 bg-foreground/60 flex items-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <p className="text-primary-foreground text-sm leading-relaxed">
+                      {desc}
+                    </p>
                   </div>
-                );
-              })()}
+                )}
+              </div>
+              <p className="text-sm text-foreground/70 font-normal">
+                {showCategory ? project.category : project.title}
+              </p>
             </div>
-            <p className="text-sm text-foreground/70 font-normal">
-              {showCategory ? project.category : project.title}
-            </p>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {showViewAll && (

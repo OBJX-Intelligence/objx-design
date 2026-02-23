@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { useProjects, PRACTICE_AREAS, type Project, type ProjectImage } from "@/hooks/useProjects";
+import { useProjects, type Project, type ProjectImage, type Category } from "@/hooks/useProjects";
 import {
   Trash2,
   Plus,
@@ -18,7 +18,7 @@ import {
   X,
 } from "lucide-react";
 
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "objxdesign2026";
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "GOODtimes2025!";
 const SESSION_KEY = "objxdesign_admin";
 
 function isAuthed(): boolean {
@@ -490,10 +490,12 @@ const BLANK: Omit<Project, "id" | "orderIndex" | "published"> = {
 
 function ProjectForm({
   initial,
+  categories,
   onSave,
   onCancel,
 }: {
   initial?: Partial<Project>;
+  categories: Category[];
   onSave: (data: Omit<Project, "id" | "orderIndex">) => void;
   onCancel: () => void;
 }) {
@@ -528,8 +530,8 @@ function ProjectForm({
             className="w-full border border-input bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
           >
             <option value="">Select practice area</option>
-            {PRACTICE_AREAS.map((area) => (
-              <option key={area} value={area}>{area}</option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.name}>{cat.name}</option>
             ))}
           </select>
         </div>
@@ -575,10 +577,15 @@ function ProjectForm({
 function AdminPanel() {
   const {
     projects,
+    categories,
     addProject,
     updateProject,
     deleteProject,
     reorderProject,
+    addCategory,
+    updateCategory,
+    deleteCategory,
+    reorderCategory,
     exportJson,
     saveError,
     clearSaveError,
@@ -587,6 +594,13 @@ function AdminPanel() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
   const [savedId, setSavedId] = useState<string | null>(null);
+  const [addingCategory, setAddingCategory] = useState(false);
+  const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null);
+  const [newCatName, setNewCatName] = useState("");
+  const [newCatDesc, setNewCatDesc] = useState("");
+  const [editCatName, setEditCatName] = useState("");
+  const [editCatDesc, setEditCatDesc] = useState("");
+  const [confirmDeleteCat, setConfirmDeleteCat] = useState<string | null>(null);
 
   function confirmSave(id: string) {
     setSavedId(id);
@@ -653,6 +667,7 @@ function AdminPanel() {
       {/* Add form */}
       {adding && (
         <ProjectForm
+          categories={categories}
           onSave={(data) => {
             const newProject = addProject(data);
             setAdding(false);
@@ -661,6 +676,187 @@ function AdminPanel() {
           onCancel={() => setAdding(false)}
         />
       )}
+
+      {/* ─── Practice Areas management ─────────────────── */}
+      <div className="border border-border/60 p-6 space-y-4 bg-card">
+        <div className="flex items-center justify-between">
+          <h2 className="text-sm font-medium">Practice Areas</h2>
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            onClick={() => { setAddingCategory(true); setNewCatName(""); setNewCatDesc(""); }}
+            className="gap-1.5"
+          >
+            <Plus className="w-3.5 h-3.5" />
+            Add category
+          </Button>
+        </div>
+
+        {/* Add category inline form */}
+        {addingCategory && (
+          <div className="flex flex-col sm:flex-row gap-2 border border-dashed border-border/50 p-3">
+            <Input
+              value={newCatName}
+              onChange={(e) => setNewCatName(e.target.value)}
+              placeholder="Category name"
+              className="text-xs h-8"
+              autoFocus
+            />
+            <Input
+              value={newCatDesc}
+              onChange={(e) => setNewCatDesc(e.target.value)}
+              placeholder="Description (shown on landing hover)"
+              className="text-xs h-8"
+            />
+            <div className="flex gap-1 shrink-0">
+              <Button
+                size="sm"
+                disabled={!newCatName.trim()}
+                onClick={() => {
+                  addCategory(newCatName.trim(), newCatDesc.trim());
+                  setAddingCategory(false);
+                }}
+              >
+                Add
+              </Button>
+              <Button size="sm" variant="ghost" onClick={() => setAddingCategory(false)}>
+                Cancel
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Category rows */}
+        <div className="space-y-1.5">
+          {categories.map((cat, idx) => {
+            const projectCount = projects.filter((p) => p.category === cat.name).length;
+            const isEditing = editingCategoryId === cat.id;
+
+            return (
+              <div key={cat.id} className="flex items-center gap-3 border border-border/40 px-3 py-2">
+                {/* Reorder arrows */}
+                <div className="flex flex-col gap-0.5 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => reorderCategory(cat.id, "up")}
+                    disabled={idx === 0}
+                    className="p-0.5 hover:bg-muted rounded disabled:opacity-20 disabled:cursor-not-allowed"
+                    title="Move up"
+                  >
+                    <ChevronUp className="w-3.5 h-3.5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => reorderCategory(cat.id, "down")}
+                    disabled={idx === categories.length - 1}
+                    className="p-0.5 hover:bg-muted rounded disabled:opacity-20 disabled:cursor-not-allowed"
+                    title="Move down"
+                  >
+                    <ChevronDown className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                {/* Name + description */}
+                {isEditing ? (
+                  <div className="flex-1 flex flex-col sm:flex-row gap-2">
+                    <Input
+                      value={editCatName}
+                      onChange={(e) => setEditCatName(e.target.value)}
+                      placeholder="Category name"
+                      className="text-xs h-8"
+                      autoFocus
+                    />
+                    <Input
+                      value={editCatDesc}
+                      onChange={(e) => setEditCatDesc(e.target.value)}
+                      placeholder="Description (optional)"
+                      className="text-xs h-8"
+                    />
+                    <div className="flex gap-1 shrink-0">
+                      <Button
+                        size="sm"
+                        disabled={!editCatName.trim()}
+                        onClick={() => {
+                          const nameChanged = editCatName.trim() !== cat.name;
+                          updateCategory(
+                            cat.id,
+                            { name: editCatName.trim(), description: editCatDesc.trim() },
+                            nameChanged // rename projects if name changed
+                          );
+                          setEditingCategoryId(null);
+                        }}
+                      >
+                        Save
+                      </Button>
+                      <Button size="sm" variant="ghost" onClick={() => setEditingCategoryId(null)}>
+                        Cancel
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm font-medium truncate">{cat.name}</p>
+                      <span className="text-xs text-muted-foreground shrink-0">
+                        {projectCount} {projectCount === 1 ? "project" : "projects"}
+                      </span>
+                    </div>
+                    {cat.description && (
+                      <p className="text-xs text-muted-foreground truncate">{cat.description}</p>
+                    )}
+                  </div>
+                )}
+
+                {/* Actions */}
+                {!isEditing && (
+                  <div className="flex items-center gap-1 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setEditingCategoryId(cat.id);
+                        setEditCatName(cat.name);
+                        setEditCatDesc(cat.description);
+                      }}
+                      className="p-1.5 hover:bg-muted rounded transition-colors text-xs text-muted-foreground hover:text-foreground"
+                    >
+                      Edit
+                    </button>
+                    {confirmDeleteCat === cat.id ? (
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={() => {
+                            deleteCategory(cat.id);
+                            setConfirmDeleteCat(null);
+                          }}
+                          className="text-xs text-destructive hover:underline"
+                        >
+                          Confirm
+                        </button>
+                        <button
+                          onClick={() => setConfirmDeleteCat(null)}
+                          className="text-xs text-muted-foreground hover:underline"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setConfirmDeleteCat(cat.id)}
+                        className="p-1.5 hover:bg-muted rounded transition-colors"
+                        title={`Delete (${projectCount} projects use this)`}
+                      >
+                        <Trash2 className="w-3.5 h-3.5 text-muted-foreground hover:text-destructive transition-colors" />
+                      </button>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Project list */}
       <div className="space-y-2">
@@ -674,6 +870,7 @@ function AdminPanel() {
             <ProjectForm
               key={project.id}
               initial={project}
+              categories={categories}
               onSave={(data) => {
                 updateProject(project.id, data);
                 setEditingId(null);
